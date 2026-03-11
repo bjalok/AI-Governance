@@ -154,6 +154,88 @@ const statusStyles = {
   "Approval Pending": { bg: "bg-yellow-500/10", text: "text-yellow-400", border: "border-yellow-500/20", dot: "bg-yellow-400" },
 };
 
+const auditProductionData = {
+  latency: {
+    "1d":  { p50: 1.1, p95: 1.8, p99: 2.9, avg: 1.3, trend: [{ label: "Today", p50: 1.1, p95: 1.8, p99: 2.9 }] },
+    "7d":  { p50: 1.1, p95: 1.8, p99: 2.9, avg: 1.3, trend: [
+      { label: "Mar 05", p50: 1.3, p95: 2.0, p99: 3.2 },
+      { label: "Mar 06", p50: 1.0, p95: 1.6, p99: 2.5 },
+      { label: "Mar 07", p50: 1.1, p95: 1.8, p99: 2.9 },
+      { label: "Mar 08", p50: 1.2, p95: 1.9, p99: 3.0 },
+      { label: "Mar 09", p50: 0.9, p95: 1.5, p99: 2.3 },
+      { label: "Mar 10", p50: 1.0, p95: 1.7, p99: 2.7 },
+      { label: "Mar 11", p50: 1.1, p95: 1.8, p99: 2.9 },
+    ]},
+    "30d": { p50: 1.2, p95: 2.0, p99: 3.1, avg: 1.4, trend: [
+      { label: "Feb 10", p50: 1.1, p95: 1.7, p99: 2.6 }, { label: "Feb 12", p50: 1.3, p95: 2.1, p99: 3.3 },
+      { label: "Feb 14", p50: 0.9, p95: 1.5, p99: 2.2 }, { label: "Feb 16", p50: 1.2, p95: 1.9, p99: 3.0 },
+      { label: "Feb 18", p50: 1.4, p95: 2.2, p99: 3.5 }, { label: "Feb 20", p50: 1.1, p95: 1.8, p99: 2.8 },
+      { label: "Feb 22", p50: 1.0, p95: 1.6, p99: 2.5 }, { label: "Feb 24", p50: 1.3, p95: 2.0, p99: 3.1 },
+      { label: "Feb 26", p50: 1.5, p95: 2.3, p99: 3.6 }, { label: "Feb 28", p50: 1.1, p95: 1.7, p99: 2.7 },
+      { label: "Mar 02", p50: 1.2, p95: 1.9, p99: 3.0 }, { label: "Mar 04", p50: 1.3, p95: 2.0, p99: 3.2 },
+      { label: "Mar 06", p50: 1.0, p95: 1.6, p99: 2.5 }, { label: "Mar 08", p50: 1.2, p95: 1.9, p99: 3.0 },
+      { label: "Mar 10", p50: 1.0, p95: 1.7, p99: 2.7 },
+    ]},
+    "mtd": { p50: 1.1, p95: 1.9, p99: 3.0, avg: 1.35, trend: [
+      { label: "Mar 01", p50: 1.0, p95: 1.6, p99: 2.4 }, { label: "Mar 02", p50: 1.2, p95: 1.9, p99: 3.0 },
+      { label: "Mar 03", p50: 0.9, p95: 1.5, p99: 2.2 }, { label: "Mar 04", p50: 1.3, p95: 2.0, p99: 3.2 },
+      { label: "Mar 05", p50: 1.3, p95: 2.0, p99: 3.2 }, { label: "Mar 06", p50: 1.0, p95: 1.6, p99: 2.5 },
+      { label: "Mar 07", p50: 1.1, p95: 1.8, p99: 2.9 }, { label: "Mar 08", p50: 1.2, p95: 1.9, p99: 3.0 },
+      { label: "Mar 09", p50: 0.9, p95: 1.5, p99: 2.3 }, { label: "Mar 10", p50: 1.0, p95: 1.7, p99: 2.7 },
+      { label: "Mar 11", p50: 1.1, p95: 1.8, p99: 2.9 },
+    ]},
+    allDays: [
+      { label: "Feb 10", p50: 1.1, p95: 1.7, p99: 2.6 }, { label: "Feb 12", p50: 1.3, p95: 2.1, p99: 3.3 },
+      { label: "Feb 14", p50: 0.9, p95: 1.5, p99: 2.2 }, { label: "Feb 16", p50: 1.2, p95: 1.9, p99: 3.0 },
+      { label: "Feb 18", p50: 1.4, p95: 2.2, p99: 3.5 }, { label: "Feb 20", p50: 1.1, p95: 1.8, p99: 2.8 },
+      { label: "Feb 22", p50: 1.0, p95: 1.6, p99: 2.5 }, { label: "Feb 24", p50: 1.3, p95: 2.0, p99: 3.1 },
+      { label: "Feb 26", p50: 1.5, p95: 2.3, p99: 3.6 }, { label: "Feb 28", p50: 1.1, p95: 1.7, p99: 2.7 },
+      { label: "Mar 01", p50: 1.0, p95: 1.6, p99: 2.4 }, { label: "Mar 02", p50: 1.2, p95: 1.9, p99: 3.0 },
+      { label: "Mar 03", p50: 0.9, p95: 1.5, p99: 2.2 }, { label: "Mar 04", p50: 1.3, p95: 2.0, p99: 3.2 },
+      { label: "Mar 05", p50: 1.3, p95: 2.0, p99: 3.2 }, { label: "Mar 06", p50: 1.0, p95: 1.6, p99: 2.5 },
+      { label: "Mar 07", p50: 1.1, p95: 1.8, p99: 2.9 }, { label: "Mar 08", p50: 1.2, p95: 1.9, p99: 3.0 },
+      { label: "Mar 09", p50: 0.9, p95: 1.5, p99: 2.3 }, { label: "Mar 10", p50: 1.0, p95: 1.7, p99: 2.7 },
+      { label: "Mar 11", p50: 1.1, p95: 1.8, p99: 2.9 },
+    ],
+    byTool: [
+      { tool: "create_onboarding_ticket", server: "workday-mcp", p50: "0.9s", p95: "1.4s", calls: 312 },
+      { tool: "read_employee_record",      server: "workday-mcp", p50: "0.7s", p95: "1.1s", calls: 487 },
+      { tool: "send_welcome_email",        server: "microsoft-graph-mcp", p50: "1.3s", p95: "2.1s", calls: 278 },
+      { tool: "send_calendar_invite",      server: "microsoft-graph-mcp", p50: "1.1s", p95: "1.8s", calls: 195 },
+      { tool: "query_knowledge_base",      server: "azure-search-mcp", p50: "0.4s", p95: "0.8s", calls: 421 },
+      { tool: "read_document",             server: "sharepoint-mcp", p50: "0.6s", p95: "1.0s", calls: 248 },
+    ],
+  },
+  cost: {
+    "1d":  { total: 18.42, runs: 47,  tokens: 1380000, avgPerRun: 0.39, budget: 30,   days: [{ label: "Today",     cost: 18.42 }] },
+    "7d":  { total: 112.74, runs: 318, tokens: 8640000, avgPerRun: 0.35, budget: 200,  days: [
+      { label: "Mar 05", cost: 14.20 }, { label: "Mar 06", cost: 17.80 }, { label: "Mar 07", cost: 15.60 },
+      { label: "Mar 08", cost: 19.40 }, { label: "Mar 09", cost: 13.90 }, { label: "Mar 10", cost: 13.42 }, { label: "Mar 11", cost: 18.42 },
+    ]},
+    "30d": { total: 481.36, runs: 1247, tokens: 36200000, avgPerRun: 0.39, budget: 600, days: [
+      { label: "Feb 10", cost: 12.40 }, { label: "Feb 12", cost: 14.80 }, { label: "Feb 14", cost: 11.20 },
+      { label: "Feb 16", cost: 16.90 }, { label: "Feb 18", cost: 18.30 }, { label: "Feb 20", cost: 15.60 },
+      { label: "Feb 22", cost: 13.70 }, { label: "Feb 24", cost: 17.40 }, { label: "Feb 26", cost: 19.80 },
+      { label: "Feb 28", cost: 14.50 }, { label: "Mar 02", cost: 16.10 }, { label: "Mar 04", cost: 18.90 },
+      { label: "Mar 06", cost: 17.80 }, { label: "Mar 08", cost: 19.40 }, { label: "Mar 10", cost: 13.42 },
+    ]},
+    "mtd": { total: 218.60, runs: 561, tokens: 16400000, avgPerRun: 0.39, budget: 600, days: [
+      { label: "Mar 01", cost: 14.20 }, { label: "Mar 02", cost: 16.10 }, { label: "Mar 03", cost: 12.80 },
+      { label: "Mar 04", cost: 18.90 }, { label: "Mar 05", cost: 14.20 }, { label: "Mar 06", cost: 17.80 },
+      { label: "Mar 07", cost: 15.60 }, { label: "Mar 08", cost: 19.40 }, { label: "Mar 09", cost: 13.90 },
+      { label: "Mar 10", cost: 13.42 }, { label: "Mar 11", cost: 18.42 },
+    ]},
+    byTool: [
+      { tool: "create_onboarding_ticket", server: "workday-mcp",        calls: 312, tokens: 11200000, cost: 145.60 },
+      { tool: "read_employee_record",      server: "workday-mcp",        calls: 487, tokens: 13400000, cost: 121.80 },
+      { tool: "send_welcome_email",        server: "microsoft-graph-mcp", calls: 278, tokens: 9600000,  cost: 86.40 },
+      { tool: "send_calendar_invite",      server: "microsoft-graph-mcp", calls: 195, tokens: 7200000,  cost: 64.80 },
+      { tool: "query_knowledge_base",      server: "azure-search-mcp",   calls: 421, tokens: 4800000,  cost: 43.20 },
+      { tool: "read_document",             server: "sharepoint-mcp",      calls: 248, tokens: 4000000,  cost: 36.00 },
+    ],
+  },
+};
+
 const navItems = [
   { label: "Dashboard", icon: "⊞", key: "dashboard" },
   { label: "Agent Registry", icon: "◫", key: "registry" },
@@ -192,6 +274,72 @@ const agentRiskScores = {
 
 const scoreBucket = s => s <= 5 ? "Low" : s <= 10 ? "Medium" : s <= 15 ? "High" : "Critical";
 const scoreBucketColor = s => s <= 5 ? "#34d399" : s <= 10 ? "#a78bfa" : s <= 15 ? "#f59e0b" : "#ef4444";
+
+// Runtime signals: live data sources used to evaluate each risk at runtime
+const runtimeSignals = {
+  "REG-HR-20231012": {
+    sources: ["Evaluation Metrics", "Audit Logs", "Agent Config", "Agent Manifest"],
+    lastRun: "Mar 11, 2026 · 09:14 UTC",
+    risks: {
+      "RS-001": { source: "Evaluation Metrics", signal: "Hallucination Score: 0.06 — 1 incident across 20 test cases" },
+      "RS-002": { source: "Audit Logs", signal: "1 injection pattern detected in 7-day prod window; system prompt hardened" },
+      "RS-003": { source: "Agent Config", signal: "Safety guardrails active — 0 jailbreak events in 318 prod runs" },
+      "RS-004": { source: "Agent Config + Manifest", signal: "PII scoped to HR namespace; Payroll data explicitly BLOCKED" },
+      "RS-005": { source: "Evaluation Metrics", signal: "0 toxic outputs across all 23 evaluation runs" },
+      "RS-006": { source: "Evaluation Metrics", signal: "Context Faithfulness 88.4% — low demographic bias signal detected" },
+      "RS-007": { source: "Agent Manifest", signal: "3 permitted tools — 0 out-of-scope invocations in 1,941 audit calls" },
+      "RS-008": { source: "Audit Logs", signal: "All 1,941 tool calls within permitted SharePoint / Workday boundary" },
+      "RS-009": { source: "Agent Config", signal: "Human approval gate enforced before create_onboarding_ticket execution" },
+      "RS-010": { source: "Audit Logs", signal: "Knowledge base last synced Mar 10, 2026 — 1 day delta detected" },
+      "RS-011": { source: "Audit Logs", signal: "0 recursive loop events across 7-day production window (P99: 2.9s)" },
+      "RS-012": { source: "Agent Config", signal: "Secrets managed via Azure Key Vault — absent from all tool response payloads" },
+      "RS-013": { source: "Audit Logs", signal: "Session isolation enabled — no cross-session context leakage detected" },
+      "RS-014": { source: "Agent Config", signal: "GDPR & SOC2 compliance checks active; legal@company.com is compliance owner" },
+      "RS-015": { source: "Audit Logs", signal: "Avg cost/run $0.39 — 7d total $112.74 vs $200 budget (56% used)" },
+    },
+  },
+  "REG-FIN-20231013": {
+    sources: ["Agent Config", "Baseline Assessment"],
+    lastRun: null,
+    risks: {},
+  },
+  "REG-CS-20231014": {
+    sources: ["Evaluation Metrics", "Audit Logs", "Agent Config", "Agent Manifest", "CRM Integration Logs"],
+    lastRun: "Mar 11, 2026 · 10:42 UTC",
+    risks: {
+      "RS-001": { source: "Evaluation Metrics", signal: "Hallucination Score: 0.31 — 6 incidents across 20 test cases; open-ended queries flagged" },
+      "RS-002": { source: "Audit Logs", signal: "14 injection patterns detected in 7-day prod window; 3 system-prompt override attempts logged" },
+      "RS-003": { source: "Agent Config", signal: "2 guardrail bypass events detected in 318 prod runs; jailbreak filter triggered" },
+      "RS-004": { source: "Audit Logs", signal: "Account PII (name, email, order history, payment method) accessed across 1,200+ sessions" },
+      "RS-005": { source: "Evaluation Metrics", signal: "4 toxic outputs flagged across 20 evaluation runs; open-ended input exposure confirmed" },
+      "RS-006": { source: "Evaluation Metrics", signal: "Context Faithfulness 61.2% — demographic bias signal detected in refund decision responses" },
+      "RS-007": { source: "Agent Manifest", signal: "CRM + refund tools active — 3 out-of-scope invocations detected in 7-day audit window" },
+      "RS-008": { source: "Audit Logs", signal: "2 cross-customer record access events detected; scope boundary enforcement gaps identified" },
+      "RS-009": { source: "Agent Config", signal: "Refund tool executes without human approval gate — 11 automated refunds issued in 7-day window" },
+      "RS-010": { source: "Audit Logs", signal: "Product catalogue last synced Mar 09, 2026 — 2-day delta; 38 stale policy responses served" },
+      "RS-011": { source: "Audit Logs", signal: "2 recursive CRM call loops detected (order-lookup → refund → re-lookup) within 7-day window" },
+      "RS-012": { source: "Agent Config", signal: "CRM + payment API credentials present in 4 tool response payloads — vault integration incomplete" },
+      "RS-013": { source: "Audit Logs", signal: "Session isolation disabled for multi-turn flows — 1 cross-session PII leak event confirmed" },
+      "RS-014": { source: "Agent Config", signal: "GDPR/CCPA consent checks missing for data retention flows; compliance review overdue 18 days" },
+      "RS-015": { source: "Audit Logs", signal: "Avg cost/run $0.74 — 7d total $235.40 vs $300 budget (78% used); spike risk during peak hours" },
+    },
+  },
+  "REG-DEV-20231015": {
+    sources: ["Agent Config", "Baseline Assessment"],
+    lastRun: null,
+    risks: {},
+  },
+  "REG-LEG-20231016": {
+    sources: ["Agent Config", "Baseline Assessment"],
+    lastRun: null,
+    risks: {},
+  },
+  "REG-MKT-20231017": {
+    sources: ["Agent Config", "Baseline Assessment"],
+    lastRun: null,
+    risks: {},
+  },
+};
 
 const agentRiskReasons = {
   "HR Onboarding Agent": {
@@ -403,7 +551,26 @@ export default function AgentShield() {
   const [evalTCsReady, setEvalTCsReady] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [riskAgent, setRiskAgent] = useState("");
+  const [riskRunning, setRiskRunning] = useState(false);
+  const [riskRan, setRiskRan] = useState(false);
+  const [riskScanIdx, setRiskScanIdx] = useState(-1);
+  const riskTimerRef = useRef(null);
   const [costAgent, setCostAgent] = useState("");
+  const [auditTab, setAuditTab] = useState("latency");
+  const [auditPeriod, setAuditPeriod] = useState("7d");
+  const [auditAgent, setAuditAgent] = useState("");
+  const [auditDateFrom, setAuditDateFrom] = useState("");
+  const [auditDateTo, setAuditDateTo] = useState("");
+  const [auditLatencyPeriod, setAuditLatencyPeriod] = useState("7d");
+  const [auditLatencyDateFrom, setAuditLatencyDateFrom] = useState("");
+  const [auditLatencyDateTo, setAuditLatencyDateTo] = useState("");
+  const [dashboardAgent, setDashboardAgent] = useState("");
+  const [dashLatencyPeriod, setDashLatencyPeriod] = useState("7d");
+  const [dashLatencyDateFrom, setDashLatencyDateFrom] = useState("");
+  const [dashLatencyDateTo, setDashLatencyDateTo] = useState("");
+  const [dashCostPeriod, setDashCostPeriod] = useState("7d");
+  const [dashCostDateFrom, setDashCostDateFrom] = useState("");
+  const [dashCostDateTo, setDashCostDateTo] = useState("");
   const [costDateFrom, setCostDateFrom] = useState("");
   const [costDateTo, setCostDateTo] = useState("");
   const [extraAgents, setExtraAgents] = useState([]);
@@ -495,6 +662,21 @@ export default function AgentShield() {
     step();
   }
 
+  function runRiskEval() {
+    if (!riskAgent) return;
+    clearInterval(riskTimerRef.current);
+    setRiskRunning(true); setRiskRan(false); setRiskScanIdx(0);
+    let idx = 0;
+    riskTimerRef.current = setInterval(() => {
+      idx++;
+      setRiskScanIdx(idx);
+      if (idx >= riskScenarios.length) {
+        clearInterval(riskTimerRef.current);
+        setRiskRunning(false); setRiskRan(true);
+      }
+    }, 220);
+  }
+
   const cd = costAgent ? costData[costAgent] : null;
   const costAgentName = costAgent ? allAgents.find(a => a.id === costAgent)?.name : "";
   const costMaxToolCost = cd ? Math.max(...cd.currentRunToolCosts.map(t => t.cost)) : 0;
@@ -511,6 +693,7 @@ export default function AgentShield() {
     <div style={{ fontFamily: "'DM Sans', 'Segoe UI', system-ui, sans-serif" }}>
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        @keyframes spin { to { transform: rotate(360deg); } }
         .root { font-family: 'DM Sans', system-ui, sans-serif; display: flex; height: 100vh; width: 100vw; overflow: hidden; background: #0a0f1e; color: #e2e8f0; position: fixed; top:0;left:0;right:0;bottom:0; }
         .sidebar { width: 210px; min-width: 210px; background: #0d1324; border-right: 1px solid #1e2638; display: flex; flex-direction: column; flex-shrink: 0; }
         .sidebar-logo { height: 64px; display: flex; align-items: center; gap: 10px; padding: 0 20px; border-bottom: 1px solid #1e2638; }
@@ -720,8 +903,9 @@ export default function AgentShield() {
                 {[
                   { label: "Total Agents Registered", value: "20", icon: "👥", glow: "linear-gradient(90deg,transparent,#3b82f6,transparent)", color: "#3b82f6" },
                   { label: "Active", value: "14", icon: "✓", glow: "linear-gradient(90deg,transparent,#10b981,transparent)", color: "#10b981" },
-                  { label: "Inactive", value: "4", icon: "⏸", glow: "linear-gradient(90deg,transparent,#6b7280,transparent)", color: "#6b7280" },
+                  { label: "Inactive", value: "2", icon: "⏸", glow: "linear-gradient(90deg,transparent,#6b7280,transparent)", color: "#6b7280" },
                   { label: "Suspended", value: "2", icon: "⛔", glow: "linear-gradient(90deg,transparent,#f59e0b,transparent)", color: "#f59e0b" },
+                  { label: "Approval Pending", value: "2", icon: "◷", glow: "linear-gradient(90deg,transparent,#facc15,transparent)", color: "#facc15" },
                 ].map(k => (
                   <div className="kpi-card" key={k.label} style={{ flex: 1 }}>
                     <div className="kpi-glow" style={{ background: k.glow }} />
@@ -1174,13 +1358,16 @@ export default function AgentShield() {
                 const agentObj = allAgents.find(a => a.id === riskAgent);
                 const agentName = agentObj?.name || "";
                 const agentStatus = agentObj?.status || "";
+                const signals = runtimeSignals[riskAgent] || { sources: ["Agent Config", "Baseline Assessment"], lastRun: null, risks: {} };
+                const typeColors = { Security:"#ef4444", Compliance:"#f59e0b", Governance:"#a78bfa", Operational:"#60a5fa", Privacy:"#34d399", Financial:"#fbbf24" };
+
                 if (agentStatus === "Inactive" || agentStatus === "Approval Pending") {
                   const isInactive = agentStatus === "Inactive";
                   const color = isInactive ? "#64748b" : "#facc15";
                   const icon = isInactive ? "⊘" : "◷";
                   const msg = isInactive
-                    ? "This agent is inactive. Risk scenarios are not evaluated for inactive agents."
-                    : "This agent is pending approval. Risk scenarios will be available once the agent is approved and activated.";
+                    ? "This agent is inactive. Runtime risk evaluation is unavailable for inactive agents."
+                    : "This agent is pending approval. Runtime risk evaluation will be available once activated.";
                   return (
                     <div className="empty-eval">
                       <div className="empty-icon" style={{ color }}>{icon}</div>
@@ -1189,55 +1376,106 @@ export default function AgentShield() {
                     </div>
                   );
                 }
-                const filteredScenarios = riskScenarios;
-                const typeColors = { Security:"#ef4444", Compliance:"#f59e0b", Governance:"#a78bfa", Operational:"#60a5fa", Privacy:"#34d399", Financial:"#fbbf24" };
+
+                // KPI counts from evaluated scores
+                const evalScores = riskScenarios.map(r => agentRiskScores[agentName]?.[r.id] ?? r.score);
+                const kpiCounts = {
+                  Critical: evalScores.filter(s => s > 15).length,
+                  High:     evalScores.filter(s => s > 10 && s <= 15).length,
+                  Medium:   evalScores.filter(s => s > 5  && s <= 10).length,
+                  Low:      evalScores.filter(s => s <= 5).length,
+                };
+
                 return (
-                  <div style={{ background: "rgba(17,23,39,0.9)", border: "1px solid #1e2638", borderRadius: 12, flexShrink: 0 }}>
-                    <div className="tc-header">
-                      <span className="tc-title">⚠ Risk Scenarios — {agentName}</span>
-                    </div>
-                    <div style={{ overflow: "auto" }}>
-                      <table className="tc-gen-table">
-                        <thead>
-                          <tr>
-                            <th style={{ width: 80 }}>ID</th>
-                            <th style={{ minWidth: 280 }}>Scenario</th>
-                            <th style={{ width: 110 }}>Risk Type</th>
-                            <th style={{ width: 90 }}>Severity</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {filteredScenarios.map(r => {
-                            const score = agentRiskScores[agentName]?.[r.id] ?? r.score;
-                            const sc = scoreBucketColor(score);
-                            const bk = scoreBucket(score);
-                            return (
-                              <tr key={r.id} style={{ cursor: "pointer" }} onClick={() => setRiskDetailModal({ r, score, sc, bk, agentName })}>
-                                <td><span style={{ fontFamily:"'DM Mono',monospace", fontSize:11, color:"#60a5fa" }}>{r.id}</span></td>
-                                <td style={{ color:"#e2e8f0", fontWeight:500, lineHeight:1.5 }}>{r.scenario}</td>
-                                <td>
-                                  <span style={{ fontSize:11, padding:"2px 8px", borderRadius:20, background:`${typeColors[r.type]}18`, color:typeColors[r.type], border:`1px solid ${typeColors[r.type]}30`, fontWeight:600 }}>
-                                    {r.type}
-                                  </span>
-                                </td>
-                                <td>
-                                  <span style={{ fontSize:11, padding:"2px 8px", borderRadius:20, background:`${sc}18`, color:sc, border:`1px solid ${sc}30`, fontWeight:700 }}>
-                                    {bk}
-                                  </span>
-                                </td>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+
+                    {/* KPI summary — show after run or if has prior data */}
+                    {(riskRan || signals.lastRun) && (
+                      <div style={{ display: "flex", gap: 10 }}>
+                        {[
+                          { label: "Critical", count: kpiCounts.Critical, color: "#ef4444", bg: "rgba(239,68,68,0.08)", border: "rgba(239,68,68,0.2)" },
+                          { label: "High",     count: kpiCounts.High,     color: "#f59e0b", bg: "rgba(245,158,11,0.08)", border: "rgba(245,158,11,0.2)" },
+                          { label: "Medium",   count: kpiCounts.Medium,   color: "#a78bfa", bg: "rgba(167,139,250,0.08)", border: "rgba(167,139,250,0.2)" },
+                          { label: "Low",      count: kpiCounts.Low,      color: "#34d399", bg: "rgba(52,211,153,0.08)", border: "rgba(52,211,153,0.2)" },
+                        ].map(b => (
+                          <div key={b.label} style={{ flex: 1, background: b.bg, border: `1px solid ${b.border}`, borderRadius: 10, padding: "12px 14px", textAlign: "center" }}>
+                            <div style={{ fontSize: 22, fontWeight: 700, color: b.color, fontFamily: "'DM Mono',monospace" }}>{b.count}</div>
+                            <div style={{ fontSize: 10, color: "#64748b", marginTop: 2 }}>{b.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Not yet run placeholder */}
+                    {!riskRan && !riskRunning && !signals.lastRun && (
+                      <div className="empty-eval" style={{ paddingTop: 32 }}>
+                        <div className="empty-icon" style={{ fontSize: 28 }}>◈</div>
+                        <div className="empty-text">Ready to Evaluate</div>
+                        <div className="empty-sub">Click <strong style={{ color: "#60a5fa" }}>▶ Run Evaluation</strong> to scan {agentName} against {riskScenarios.length} runtime risk scenarios.</div>
+                      </div>
+                    )}
+
+                    {/* Results table */}
+                    {(riskRan || signals.lastRun) && (
+                      <div style={{ background: "rgba(17,23,39,0.9)", border: "1px solid #1e2638", borderRadius: 12, overflow: "hidden" }}>
+                        <div className="tc-header">
+                          <span className="tc-title">⚠ Risk Evaluation Results — {agentName}</span>
+                          {(riskRan || signals.lastRun) && <span style={{ fontSize: 10, color: "#34d399", fontFamily: "'DM Mono',monospace" }}>✓ {riskScenarios.length} scenarios evaluated</span>}
+                        </div>
+                        <div style={{ overflow: "auto" }}>
+                          <table className="tc-gen-table">
+                            <thead>
+                              <tr>
+                                <th style={{ width: 72 }}>ID</th>
+                                <th style={{ minWidth: 280 }}>Scenario</th>
+                                <th style={{ width: 110 }}>Risk Type</th>
+                                <th style={{ width: 90 }}>Severity</th>
                               </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
-                    </div>
+                            </thead>
+                            <tbody>
+                              {riskScenarios.map((r, idx) => {
+                                const score = agentRiskScores[agentName]?.[r.id] ?? r.score;
+                                const sc = scoreBucketColor(score);
+                                const bk = scoreBucket(score);
+                                const isScanning = riskRunning && riskScanIdx === idx;
+                                const isScanned  = riskRunning && riskScanIdx > idx;
+                                const rowOpacity = riskRunning ? (isScanning || isScanned ? 1 : 0.3) : 1;
+                                return (
+                                  <tr key={r.id}
+                                    style={{ cursor: "pointer", opacity: rowOpacity, transition: "opacity 0.15s", background: isScanning ? "rgba(59,130,246,0.06)" : undefined }}
+                                    onClick={() => !riskRunning && setRiskDetailModal({ r, score, sc, bk, agentName })}>
+                                    <td>
+                                      <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                                        {isScanning && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#60a5fa", display: "inline-block", flexShrink: 0, boxShadow: "0 0 6px #60a5fa" }} />}
+                                        <span style={{ fontFamily:"'DM Mono',monospace", fontSize:11, color:"#60a5fa" }}>{r.id}</span>
+                                      </div>
+                                    </td>
+                                    <td style={{ color:"#e2e8f0", fontWeight:500, lineHeight:1.5 }}>{r.scenario}</td>
+                                    <td>
+                                      <span style={{ fontSize:11, padding:"2px 8px", borderRadius:20, background:`${typeColors[r.type]}18`, color:typeColors[r.type], border:`1px solid ${typeColors[r.type]}30`, fontWeight:600 }}>
+                                        {r.type}
+                                      </span>
+                                    </td>
+                                    <td>
+                                      <span style={{ fontSize:11, padding:"2px 8px", borderRadius:20, background:`${sc}18`, color:sc, border:`1px solid ${sc}30`, fontWeight:700 }}>
+                                        {bk}
+                                      </span>
+                                    </td>
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 );
               })() : (
                 <div className="empty-eval">
                   <div className="empty-icon">◈</div>
                   <div className="empty-text">No agent selected</div>
-                  <div className="empty-sub">Select an agent above to view its risk scenarios.</div>
+                  <div className="empty-sub">Select an agent above to run a runtime risk evaluation.</div>
                 </div>
               )}
 
@@ -1507,8 +1745,795 @@ export default function AgentShield() {
             </div>
           )}
 
+          {/* AUDIT TRAIL VIEW */}
+          {activeNav === "audit" && (() => {
+            const periods = [{ key: "1d", label: "Today" }, { key: "7d", label: "Last 7 Days" }, { key: "30d", label: "Last 30 Days" }, { key: "mtd", label: "This Month" }, { key: "custom", label: "Custom" }];
+            const customDays = auditPeriod === "custom" && auditDateFrom && auditDateTo
+              ? auditProductionData.cost["30d"].days.filter(d => {
+                  const label = d.label;
+                  const year = 2026;
+                  const months = { Jan:1, Feb:2, Mar:3, Apr:4, May:5, Jun:6, Jul:7, Aug:8, Sep:9, Oct:10, Nov:11, Dec:12 };
+                  const [mon, day] = label.split(" ");
+                  const dateStr = `${year}-${String(months[mon]).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+                  return dateStr >= auditDateFrom && dateStr <= auditDateTo;
+                })
+              : [];
+            const costPeriod = auditPeriod === "custom"
+              ? { total: customDays.reduce((s, d) => s + d.cost, 0), runs: Math.round(customDays.reduce((s, d) => s + d.cost, 0) / 0.35), tokens: Math.round(customDays.reduce((s, d) => s + d.cost, 0) / 0.35) * 28000, avgPerRun: 0.35, budget: 600, days: customDays }
+              : auditProductionData.cost[auditPeriod];
+            const maxCost = Math.max(...costPeriod.days.map(d => d.cost), 1);
+            const maxToolCost = Math.max(...auditProductionData.cost.byTool.map(t => t.cost), 1);
+            const totalToolCost = auditProductionData.cost.byTool.reduce((s, t) => s + t.cost, 0);
+            return (
+              <div className="eval-wrap">
+                {/* Agent Selector */}
+                <div className="eval-select-card">
+                  <div className="eval-select-title"><span>≡</span> Select Agent to Audit</div>
+                  <div className="agent-select-grid">
+                    {allAgents.map(a => {
+                      const s = statusStyles[a.status];
+                      return (
+                        <div key={a.id}
+                          className={`agent-select-item${auditAgent === a.id ? " selected" : ""}`}
+                          onClick={() => setAuditAgent(a.id)}>
+                          <div className="asi-id">{a.id}</div>
+                          <div className="asi-name">{a.name}</div>
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                            <span className="asi-platform">{a.platform}</span>
+                            <span className={`status-badge ${s.bg} ${s.text} ${s.border}`} style={{ fontSize: 10, padding: "2px 7px" }}>
+                              <span className={`status-dot ${s.dot}`} />{a.status}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* No agent selected */}
+                {!auditAgent && (
+                  <div className="empty-eval">
+                    <div className="empty-icon">≡</div>
+                    <div className="empty-text">No agent selected</div>
+                    <div className="empty-sub">Select an agent above to view its production latency and cost audit data.</div>
+                  </div>
+                )}
+
+                {/* Agent selected but no data (non-HR agents) */}
+                {auditAgent && auditAgent !== "REG-HR-20231012" && (
+                  <div className="empty-eval">
+                    <div className="empty-icon" style={{ color: "#64748b" }}>◎</div>
+                    <div className="empty-text" style={{ color: "#64748b" }}>No production data available</div>
+                    <div className="empty-sub">No audit data has been collected for {allAgents.find(a => a.id === auditAgent)?.name} yet.</div>
+                  </div>
+                )}
+
+                {/* HR Onboarding Agent — full data */}
+                {auditAgent === "REG-HR-20231012" && (
+                  <>
+                {/* Sub-tabs */}
+                <div style={{ display: "flex", gap: 4, background: "rgba(255,255,255,0.03)", border: "1px solid #1e2638", borderRadius: 10, padding: 4, alignSelf: "flex-start" }}>
+                  {[{ key: "latency", label: "⏱ Latency" }, { key: "cost", label: "◎ Cost" }].map(t => (
+                    <button key={t.key} onClick={() => setAuditTab(t.key)}
+                      style={{ padding: "6px 18px", borderRadius: 7, border: "none", cursor: "pointer", fontSize: 12, fontWeight: 600, transition: "all 0.15s",
+                        background: auditTab === t.key ? "#1e40af" : "transparent",
+                        color: auditTab === t.key ? "#93c5fd" : "#64748b" }}>
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+
+                {/* ── LATENCY TAB ── */}
+                {auditTab === "latency" && (() => {
+                  const latencyPeriods = [{ key: "1d", label: "Today" }, { key: "7d", label: "Last 7 Days" }, { key: "30d", label: "Last 30 Days" }, { key: "mtd", label: "This Month" }, { key: "custom", label: "Custom" }];
+                  const months = { Jan:1, Feb:2, Mar:3, Apr:4, May:5, Jun:6, Jul:7, Aug:8, Sep:9, Oct:10, Nov:11, Dec:12 };
+                  const customLatencyDays = auditLatencyPeriod === "custom" && auditLatencyDateFrom && auditLatencyDateTo
+                    ? auditProductionData.latency.allDays.filter(d => {
+                        const [mon, day] = d.label.split(" ");
+                        const dateStr = `2026-${String(months[mon]).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+                        return dateStr >= auditLatencyDateFrom && dateStr <= auditLatencyDateTo;
+                      })
+                    : [];
+                  const latPeriod = auditLatencyPeriod === "custom"
+                    ? { p50: 1.1, p95: 1.8, p99: 2.9, avg: 1.3, trend: customLatencyDays }
+                    : auditProductionData.latency[auditLatencyPeriod];
+                  const showChart = auditLatencyPeriod !== "custom" || (auditLatencyDateFrom && auditLatencyDateTo);
+                  const latTrend = latPeriod?.trend || [];
+                  const maxP99 = Math.max(...latTrend.map(x => x.p99), 1);
+                  const selectedPeriodLabel = latencyPeriods.find(p => p.key === auditLatencyPeriod)?.label || "";
+                  return (
+                    <>
+                      {/* Period filter */}
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                        <span style={{ fontSize: 11, color: "#475569" }}>Period:</span>
+                        <div style={{ display: "flex", gap: 4, background: "rgba(255,255,255,0.03)", border: "1px solid #1e2638", borderRadius: 8, padding: 3 }}>
+                          {latencyPeriods.map(p => (
+                            <button key={p.key} onClick={() => setAuditLatencyPeriod(p.key)}
+                              style={{ padding: "5px 14px", borderRadius: 6, border: "none", cursor: "pointer", fontSize: 11, fontWeight: 600, transition: "all 0.15s",
+                                background: auditLatencyPeriod === p.key ? "#1e3a5f" : "transparent",
+                                color: auditLatencyPeriod === p.key ? "#60a5fa" : "#64748b" }}>
+                              {p.label}
+                            </button>
+                          ))}
+                        </div>
+                        {auditLatencyPeriod === "custom" && (
+                          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                            <span style={{ fontSize: 11, color: "#475569" }}>From</span>
+                            <input type="date" value={auditLatencyDateFrom} onChange={e => setAuditLatencyDateFrom(e.target.value)}
+                              style={{ background: "#0d1526", border: "1px solid #2a3449", borderRadius: 6, color: "#94a3b8", fontSize: 11, padding: "4px 8px", outline: "none" }} />
+                            <span style={{ fontSize: 11, color: "#475569" }}>To</span>
+                            <input type="date" value={auditLatencyDateTo} onChange={e => setAuditLatencyDateTo(e.target.value)}
+                              style={{ background: "#0d1526", border: "1px solid #2a3449", borderRadius: 6, color: "#94a3b8", fontSize: 11, padding: "4px 8px", outline: "none" }} />
+                          </div>
+                        )}
+                      </div>
+
+                      {showChart && (
+                        <>
+                          {/* KPI cards */}
+                          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
+                            {[
+                              { label: "P50 Latency", value: `${latPeriod.p50}s`, sub: "median response",    color: "#34d399", glow: "linear-gradient(90deg,transparent,#10b981,transparent)" },
+                              { label: "P95 Latency", value: `${latPeriod.p95}s`, sub: "95th percentile",    color: "#a78bfa", glow: "linear-gradient(90deg,transparent,#8b5cf6,transparent)" },
+                              { label: "P99 Latency", value: `${latPeriod.p99}s`, sub: "99th percentile",    color: "#f87171", glow: "linear-gradient(90deg,transparent,#ef4444,transparent)" },
+                              { label: "Avg Latency", value: `${latPeriod.avg}s`, sub: "production average", color: "#60a5fa", glow: "linear-gradient(90deg,transparent,#3b82f6,transparent)" },
+                            ].map(k => (
+                              <div className="kpi-card" key={k.label}>
+                                <div className="kpi-glow" style={{ background: k.glow }} />
+                                <div className="kpi-top"><span className="kpi-label">{k.label}</span></div>
+                                <div className="kpi-value" style={{ fontSize: 22, color: k.color }}>{k.value}</div>
+                                <div style={{ fontSize: 10, color: "#475569", marginTop: 2 }}>{k.sub}</div>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Latency trend bar chart */}
+                          <div style={{ background: "rgba(17,23,39,0.9)", border: "1px solid #1e2638", borderRadius: 12, padding: "16px 20px" }}>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: "#cbd5e1", marginBottom: 16 }}>Production Latency Trend — {selectedPeriodLabel}</div>
+                            {latTrend.length === 0 ? (
+                              <div style={{ textAlign: "center", padding: "24px 0", color: "#475569", fontSize: 12 }}>No data for selected date range.</div>
+                            ) : (
+                              <div style={{ display: "flex", alignItems: "flex-end", gap: 6 }}>
+                                {latTrend.map((d, i) => (
+                                  <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+                                    <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 1, alignItems: "center" }}>
+                                      <div style={{ width: "60%", height: Math.round((d.p99 / maxP99) * 80), background: "rgba(248,113,113,0.25)", border: "1px solid rgba(248,113,113,0.4)", borderRadius: "3px 3px 0 0" }} title={`P99: ${d.p99}s`} />
+                                      <div style={{ width: "60%", height: Math.round((d.p95 / maxP99) * 80), background: "rgba(167,139,250,0.35)", border: "1px solid rgba(167,139,250,0.5)", borderRadius: "3px 3px 0 0", marginTop: -Math.round((d.p99 / maxP99) * 80) - 1, position: "relative" }} title={`P95: ${d.p95}s`} />
+                                    </div>
+                                    <div style={{ width: "60%", height: Math.round((d.p50 / maxP99) * 80), background: "rgba(52,211,153,0.4)", border: "1px solid rgba(52,211,153,0.6)", borderRadius: "3px 3px 0 0" }} title={`P50: ${d.p50}s`} />
+                                    <div style={{ fontSize: 9, color: "#475569", marginTop: 4 }}>{d.label}</div>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                            <div style={{ display: "flex", gap: 16, marginTop: 12, paddingTop: 10, borderTop: "1px solid #1e2638" }}>
+                              {[{ color: "#34d399", label: "P50" }, { color: "#a78bfa", label: "P95" }, { color: "#f87171", label: "P99" }].map(l => (
+                                <div key={l.label} style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                                  <div style={{ width: 10, height: 10, borderRadius: 2, background: l.color, opacity: 0.7 }} />
+                                  <span style={{ fontSize: 11, color: "#64748b" }}>{l.label}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Latency by tool */}
+                          <div style={{ background: "rgba(17,23,39,0.9)", border: "1px solid #1e2638", borderRadius: 12 }}>
+                            <div className="tc-header">
+                              <span className="tc-title">⏱ Latency by MCP Tool — Production</span>
+                              <span style={{ fontSize: 11, color: "#64748b" }}>HR Onboarding Agent · {auditProductionData.latency.byTool.reduce((s, t) => s + t.calls, 0).toLocaleString()} total calls</span>
+                            </div>
+                            <div style={{ overflowX: "auto" }}>
+                              <table className="tc-gen-table">
+                                <thead>
+                                  <tr>
+                                    <th style={{ minWidth: 160 }}>MCP Server</th>
+                                    <th style={{ minWidth: 200 }}>Tool</th>
+                                    <th style={{ width: 80, textAlign: "right" }}>Calls</th>
+                                    <th style={{ width: 90, textAlign: "right" }}>P50</th>
+                                    <th style={{ width: 90, textAlign: "right" }}>P95</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {auditProductionData.latency.byTool.map(t => (
+                                    <tr key={t.tool}>
+                                      <td><span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, color: "#a78bfa" }}>{t.server}</span></td>
+                                      <td style={{ color: "#cbd5e1" }}>{t.tool}</td>
+                                      <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#94a3b8" }}>{t.calls.toLocaleString()}</td>
+                                      <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#34d399" }}>{t.p50}</td>
+                                      <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#a78bfa" }}>{t.p95}</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </>
+                      )}
+
+                      {auditLatencyPeriod === "custom" && (!auditLatencyDateFrom || !auditLatencyDateTo) && (
+                        <div style={{ textAlign: "center", padding: "32px 0", color: "#475569", fontSize: 12 }}>Select both From and To dates to view latency data.</div>
+                      )}
+                    </>
+                  );
+                })()}
+
+                {/* ── COST TAB ── */}
+                {auditTab === "cost" && (
+                  <>
+                    {/* Period filter */}
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                      <span style={{ fontSize: 11, color: "#475569" }}>Period:</span>
+                      <div style={{ display: "flex", gap: 4, background: "rgba(255,255,255,0.03)", border: "1px solid #1e2638", borderRadius: 8, padding: 3 }}>
+                        {periods.map(p => (
+                          <button key={p.key} onClick={() => setAuditPeriod(p.key)}
+                            style={{ padding: "5px 14px", borderRadius: 6, border: "none", cursor: "pointer", fontSize: 11, fontWeight: 600, transition: "all 0.15s",
+                              background: auditPeriod === p.key ? "#1e3a5f" : "transparent",
+                              color: auditPeriod === p.key ? "#60a5fa" : "#64748b" }}>
+                            {p.label}
+                          </button>
+                        ))}
+                      </div>
+                      {auditPeriod === "custom" && (
+                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                          <span style={{ fontSize: 11, color: "#475569" }}>From</span>
+                          <input type="date" value={auditDateFrom} onChange={e => setAuditDateFrom(e.target.value)}
+                            style={{ background: "#0d1526", border: "1px solid #2a3449", borderRadius: 6, color: "#94a3b8", fontSize: 11, padding: "4px 8px", outline: "none" }} />
+                          <span style={{ fontSize: 11, color: "#475569" }}>To</span>
+                          <input type="date" value={auditDateTo} onChange={e => setAuditDateTo(e.target.value)}
+                            style={{ background: "#0d1526", border: "1px solid #2a3449", borderRadius: 6, color: "#94a3b8", fontSize: 11, padding: "4px 8px", outline: "none" }} />
+                          {(auditDateFrom || auditDateTo) && (
+                            <button onClick={() => { setAuditDateFrom(""); setAuditDateTo(""); }}
+                              style={{ background: "transparent", border: "1px solid #2a3449", borderRadius: 6, color: "#64748b", fontSize: 11, padding: "4px 10px", cursor: "pointer" }}>
+                              Clear
+                            </button>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Custom period — no dates entered yet */}
+                    {auditPeriod === "custom" && (!auditDateFrom || !auditDateTo) && (
+                      <div className="empty-eval" style={{ padding: "32px 0" }}>
+                        <div className="empty-icon" style={{ fontSize: 24 }}>📅</div>
+                        <div className="empty-text">Select a date range</div>
+                        <div className="empty-sub">Choose a From and To date above to view cost data for that period.</div>
+                      </div>
+                    )}
+
+                    {/* KPI cards + chart + tools — only when dates are set for custom */}
+                    {(auditPeriod !== "custom" || (auditDateFrom && auditDateTo)) && <>
+                    {/* KPI cards */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
+                      {[
+                        { label: "Total Cost", value: `$${costPeriod.total.toFixed(2)}`, sub: `${costPeriod.runs.toLocaleString()} runs`, color: "#fbbf24", glow: "linear-gradient(90deg,transparent,#f59e0b,transparent)" },
+                        { label: "Avg Cost / Run", value: `$${costPeriod.avgPerRun.toFixed(3)}`, sub: "per production run", color: "#60a5fa", glow: "linear-gradient(90deg,transparent,#3b82f6,transparent)" },
+                        { label: "Tokens Used", value: `${(costPeriod.tokens / 1000000).toFixed(1)}M`, sub: "prompt + completion", color: "#a78bfa", glow: "linear-gradient(90deg,transparent,#8b5cf6,transparent)" },
+                      ].map(k => (
+                        <div className="kpi-card" key={k.label}>
+                          <div className="kpi-glow" style={{ background: k.glow }} />
+                          <div className="kpi-top"><span className="kpi-label">{k.label}</span></div>
+                          <div className="kpi-value" style={{ fontSize: 22, color: k.color }}>{k.value}</div>
+                          <div style={{ fontSize: 10, color: "#475569", marginTop: 2 }}>{k.sub}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Cost trend bar chart */}
+                    <div style={{ background: "rgba(17,23,39,0.9)", border: "1px solid #1e2638", borderRadius: 12, padding: "16px 20px" }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: "#cbd5e1", marginBottom: 16 }}>Cost Over Time — {periods.find(p => p.key === auditPeriod)?.label}</div>
+                      <div style={{ display: "flex", alignItems: "flex-end", gap: 6, minHeight: 100 }}>
+                        {costPeriod.days.map((d, i) => (
+                          <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                            <div style={{ fontSize: 9, color: "#475569" }}>${d.cost.toFixed(0)}</div>
+                            <div style={{ width: "70%", height: Math.round((d.cost / maxCost) * 90) + 4, background: "linear-gradient(180deg,#3b82f6,#1d4ed8)", borderRadius: "4px 4px 0 0", opacity: 0.85 }} />
+                            <div style={{ fontSize: 9, color: "#475569", textAlign: "center", whiteSpace: "nowrap" }}>{d.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ display: "flex", gap: 28, marginTop: 12, paddingTop: 10, borderTop: "1px solid #1e2638" }}>
+                        <div>
+                          <div style={{ fontSize: 10, color: "#475569", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Total in period</div>
+                          <div style={{ fontSize: 18, fontWeight: 700, color: "#fbbf24", fontFamily: "'DM Mono',monospace" }}>${costPeriod.total.toFixed(2)}</div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 10, color: "#475569", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Runs in period</div>
+                          <div style={{ fontSize: 18, fontWeight: 700, color: "#e2e8f0", fontFamily: "'DM Mono',monospace" }}>{costPeriod.runs.toLocaleString()}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Cost by tool */}
+                    <div style={{ background: "rgba(17,23,39,0.9)", border: "1px solid #1e2638", borderRadius: 12 }}>
+                      <div className="tc-header">
+                        <span className="tc-title">⚡ Cost by MCP Tool — Production (All Time)</span>
+                        <span style={{ fontSize: 11, color: "#64748b" }}>{auditProductionData.cost.byTool.length} tools · ${totalToolCost.toFixed(2)} total</span>
+                      </div>
+                      <div style={{ overflowX: "auto" }}>
+                        <table className="tc-gen-table">
+                          <thead>
+                            <tr>
+                              <th style={{ minWidth: 160 }}>MCP Server</th>
+                              <th style={{ minWidth: 200 }}>Tool</th>
+                              <th style={{ width: 80, textAlign: "right" }}>Calls</th>
+                              <th style={{ width: 100, textAlign: "right" }}>Tokens</th>
+                              <th style={{ width: 90, textAlign: "right" }}>Cost</th>
+                              <th style={{ minWidth: 140 }}>Cost Share</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {auditProductionData.cost.byTool.map(t => (
+                              <tr key={t.tool}>
+                                <td><span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, color: "#a78bfa" }}>{t.server}</span></td>
+                                <td style={{ color: "#cbd5e1" }}>{t.tool}</td>
+                                <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#94a3b8" }}>{t.calls.toLocaleString()}</td>
+                                <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#64748b" }}>{(t.tokens / 1000000).toFixed(1)}M</td>
+                                <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#fbbf24", fontWeight: 700 }}>${t.cost.toFixed(2)}</td>
+                                <td>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                    <div style={{ flex: 1, height: 5, background: "#1e2638", borderRadius: 10, overflow: "hidden" }}>
+                                      <div style={{ height: "100%", width: `${(t.cost / maxToolCost) * 100}%`, background: "linear-gradient(90deg,#3b82f6,#6366f1)", borderRadius: 10 }} />
+                                    </div>
+                                    <span style={{ fontSize: 10, color: "#64748b", width: 32, textAlign: "right" }}>{Math.round((t.cost / totalToolCost) * 100)}%</span>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    </>}
+                  </>
+                )}
+                  </>
+                )}
+              </div>
+            );
+          })()}
+
+          {/* DASHBOARD VIEW */}
+          {activeNav === "dashboard" && (() => {
+            const da = allAgents.find(a => a.id === dashboardAgent);
+            const daStatus = da?.status;
+            const daName = da?.name;
+
+            // Risk data for selected agent
+            const agentScores = dashboardAgent && daName ? (agentRiskScores[daName] || {}) : {};
+            const riskRows = riskScenarios.map(r => {
+              const score = agentScores[r.id] ?? r.score;
+              return { ...r, agentScore: score, bucket: scoreBucket(score), bucketColor: scoreBucketColor(score) };
+            });
+            const criticalCount = riskRows.filter(r => r.bucket === "Critical").length;
+            const highCount = riskRows.filter(r => r.bucket === "High").length;
+            const medCount = riskRows.filter(r => r.bucket === "Medium").length;
+            const lowCount = riskRows.filter(r => r.bucket === "Low").length;
+            const topRisks = [...riskRows].sort((a, b) => b.agentScore - a.agentScore).slice(0, 6);
+
+            // Eval data
+            const ed = evalData[dashboardAgent] || null;
+            const hasEval = !!ed && daStatus === "Active";
+
+            // Audit data (only HR has it)
+            const hasAudit = dashboardAgent === "REG-HR-20231012" && daStatus === "Active";
+
+            return (
+              <div className="eval-wrap">
+                {/* Agent Selector */}
+                <div className="eval-select-card">
+                  <div className="eval-select-title">
+                    <span>⊞</span> Select Agent — Dashboard Overview
+                  </div>
+                  <div className="agent-select-grid">
+                    {allAgents.map(a => {
+                      const s = statusStyles[a.status];
+                      return (
+                        <div key={a.id}
+                          className={`agent-select-item${dashboardAgent === a.id ? " selected" : ""}`}
+                          onClick={() => setDashboardAgent(a.id)}>
+                          <div className="asi-id">{a.id}</div>
+                          <div className="asi-name">{a.name}</div>
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                            <span className="asi-platform">{a.platform}</span>
+                            <span className={`status-badge ${s.bg} ${s.text} ${s.border}`} style={{ fontSize: 10, padding: "2px 7px" }}>
+                              <span className={`status-dot ${s.dot}`} />{a.status}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* No agent selected */}
+                {!dashboardAgent && (
+                  <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10, color: "#475569", marginTop: 40 }}>
+                    <div style={{ fontSize: 36, opacity: 0.25 }}>⊞</div>
+                    <div style={{ fontSize: 12, color: "#64748b" }}>Select an agent above to view its dashboard summary</div>
+                  </div>
+                )}
+
+                {/* Inactive */}
+                {dashboardAgent && daStatus === "Inactive" && (
+                  <div style={{ marginTop: 24, background: "rgba(100,116,139,0.07)", border: "1px solid rgba(100,116,139,0.18)", borderRadius: 12, padding: "36px 28px", textAlign: "center" }}>
+                    <div style={{ fontSize: 32, marginBottom: 10, opacity: 0.5 }}>⏸</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8", marginBottom: 6 }}>{daName}</div>
+                    <div style={{ fontSize: 12, color: "#64748b" }}>This agent is currently <span style={{ color: "#94a3b8", fontWeight: 600 }}>Inactive</span>. No live data available.</div>
+                    <div style={{ fontSize: 11, color: "#3a4459", marginTop: 8 }}>Re-activate the agent in the Registry to resume monitoring.</div>
+                  </div>
+                )}
+
+                {/* Approval Pending */}
+                {dashboardAgent && daStatus === "Approval Pending" && (
+                  <div style={{ marginTop: 24, background: "rgba(250,204,21,0.05)", border: "1px solid rgba(250,204,21,0.2)", borderRadius: 12, padding: "36px 28px", textAlign: "center" }}>
+                    <div style={{ fontSize: 32, marginBottom: 10 }}>◷</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#facc15", marginBottom: 6 }}>{daName}</div>
+                    <div style={{ fontSize: 12, color: "#a3a38a" }}>This agent is <span style={{ color: "#facc15", fontWeight: 600 }}>Approval Pending</span>. Dashboard data will be available once approved and activated.</div>
+                    <div style={{ fontSize: 11, color: "#3a4459", marginTop: 8 }}>Contact your governance team to expedite the review process.</div>
+                  </div>
+                )}
+
+                {/* Suspended — show risk chart only */}
+                {dashboardAgent && daStatus === "Suspended" && (
+                  <div style={{ marginTop: 24 }}>
+                    <div style={{ background: "rgba(249,115,22,0.06)", border: "1px solid rgba(249,115,22,0.22)", borderRadius: 12, padding: "20px 24px", marginBottom: 20, display: "flex", alignItems: "center", gap: 14 }}>
+                      <div style={{ fontSize: 28 }}>⛔</div>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: "#fb923c" }}>{daName} — Suspended</div>
+                        <div style={{ fontSize: 12, color: "#78350f", marginTop: 2 }}>This agent has been suspended. Evaluation and Audit data are unavailable. Risk profile is shown below for review.</div>
+                      </div>
+                    </div>
+
+                    {/* Risk Donut Chart */}
+                    {(() => {
+                      const riskBuckets = [
+                        { label: "Critical", count: criticalCount, color: "#ef4444" },
+                        { label: "High",     count: highCount,     color: "#f59e0b" },
+                        { label: "Medium",   count: medCount,      color: "#a78bfa" },
+                        { label: "Low",      count: lowCount,      color: "#34d399" },
+                      ];
+                      const totalRisks = riskScenarios.length;
+                      const svgR = 54, svgCx = 80, svgCy = 80;
+                      const circ = 2 * Math.PI * svgR;
+                      let accumulated = 0;
+                      const segments = riskBuckets.map(b => {
+                        const len = (b.count / totalRisks) * circ;
+                        const seg = { ...b, len, offset: accumulated };
+                        accumulated += len;
+                        return seg;
+                      });
+                      return (
+                        <div style={{ background: "rgba(15,24,40,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "20px 24px" }}>
+                          <div style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8", marginBottom: 18 }}>◈ Risk Profile — {daName}</div>
+                          <div style={{ display: "flex", alignItems: "center", gap: 28, maxWidth: 460 }}>
+                            <svg width={170} height={170} viewBox="0 0 160 160" style={{ flexShrink: 0 }}>
+                              <circle cx={svgCx} cy={svgCy} r={svgR} fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth={20} />
+                              {segments.map((seg, i) => seg.len > 0 && (
+                                <circle key={i} cx={svgCx} cy={svgCy} r={svgR}
+                                  fill="none" stroke={seg.color} strokeWidth={20}
+                                  strokeDasharray={`${seg.len - 1.5} ${circ - seg.len + 1.5}`}
+                                  strokeDashoffset={-seg.offset}
+                                  style={{ transform: "rotate(-90deg)", transformOrigin: `${svgCx}px ${svgCy}px` }}
+                                />
+                              ))}
+                              <text x={svgCx} y={svgCy - 7} textAnchor="middle" fill="#f1f5f9" fontSize={24} fontWeight={700} fontFamily="'DM Mono',monospace">{totalRisks}</text>
+                              <text x={svgCx} y={svgCy + 12} textAnchor="middle" fill="#475569" fontSize={10}>Total Risks</text>
+                            </svg>
+                            <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+                              {riskBuckets.map(b => (
+                                <div key={b.label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: b.color, flexShrink: 0, boxShadow: `0 0 5px ${b.color}80` }} />
+                                  <div style={{ flex: 1, fontSize: 12, color: "#94a3b8" }}>{b.label}</div>
+                                  <div style={{ fontSize: 14, fontWeight: 700, color: b.color, fontFamily: "'DM Mono',monospace", minWidth: 20, textAlign: "right" }}>{b.count}</div>
+                                  <div style={{ fontSize: 10, color: "#475569", minWidth: 32, textAlign: "right" }}>{Math.round((b.count / totalRisks) * 100)}%</div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
+                  </div>
+                )}
+
+                {/* Active — full 3-section summary */}
+                {dashboardAgent && daStatus === "Active" && (
+                  <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 20 }}>
+
+                    {/* Section: Evaluation Summary */}
+                    <div style={{ background: "rgba(15,24,40,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "20px 24px" }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#94a3b8", marginBottom: 16 }}>⚗ Evaluation Summary</div>
+                      {!hasEval ? (
+                        <div style={{ textAlign: "center", padding: "24px 0", color: "#475569", fontSize: 13 }}>No evaluation data available for this agent yet.</div>
+                      ) : (
+                        <>
+                          <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
+                            {[
+                              { label: "Pass Rate", value: `${ed.passRate}%`, color: ed.passRate >= 70 ? "#34d399" : "#f87171" },
+                              { label: "Total Test Runs", value: ed.totalRuns, color: "#60a5fa" },
+                              { label: "Last Run", value: ed.lastRun, color: "#94a3b8" },
+                            ].map(k => (
+                              <div key={k.label} style={{ flex: 1, background: "rgba(255,255,255,0.03)", border: "1px solid #1e2638", borderRadius: 8, padding: "14px 16px" }}>
+                                <div style={{ fontSize: 12, color: "#475569", marginBottom: 6 }}>{k.label}</div>
+                                <div style={{ fontSize: 18, fontWeight: 700, color: k.color, fontFamily: "'DM Mono',monospace" }}>{k.value}</div>
+                              </div>
+                            ))}
+                          </div>
+                          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                            {ed.metrics.map(m => (
+                              <div key={m.label} style={{ background: "rgba(255,255,255,0.02)", border: "1px solid #1e2638", borderRadius: 8, padding: "12px 16px", minWidth: 130, flex: "1 1 130px" }}>
+                                <div style={{ fontSize: 12, color: "#475569", marginBottom: 5, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{m.label}</div>
+                                <div style={{ fontSize: 15, fontWeight: 700, color: m.color, fontFamily: "'DM Mono',monospace" }}>{m.value}</div>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Section: Risk Summary — Donut Chart */}
+                    {(() => {
+                      const riskBuckets = [
+                        { label: "Critical", count: criticalCount, color: "#ef4444" },
+                        { label: "High",     count: highCount,     color: "#f59e0b" },
+                        { label: "Medium",   count: medCount,      color: "#a78bfa" },
+                        { label: "Low",      count: lowCount,      color: "#34d399" },
+                      ];
+                      const totalRisks = riskScenarios.length;
+                      const svgR = 54, svgCx = 80, svgCy = 80;
+                      const circ = 2 * Math.PI * svgR;
+                      let accumulated = 0;
+                      const segments = riskBuckets.map(b => {
+                        const len = (b.count / totalRisks) * circ;
+                        const seg = { ...b, len, offset: accumulated };
+                        accumulated += len;
+                        return seg;
+                      });
+                      return (
+                        <div style={{ background: "rgba(15,24,40,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "20px 24px" }}>
+                          <div style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8", marginBottom: 18 }}>◈ Risk Summary</div>
+                          <div style={{ display: "flex", alignItems: "center", gap: 28, maxWidth: 460 }}>
+                            <svg width={170} height={170} viewBox="0 0 160 160" style={{ flexShrink: 0 }}>
+                              <circle cx={svgCx} cy={svgCy} r={svgR} fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth={20} />
+                              {segments.map((seg, i) => seg.len > 0 && (
+                                <circle key={i} cx={svgCx} cy={svgCy} r={svgR}
+                                  fill="none" stroke={seg.color} strokeWidth={20}
+                                  strokeDasharray={`${seg.len - 1.5} ${circ - seg.len + 1.5}`}
+                                  strokeDashoffset={-seg.offset}
+                                  style={{ transform: "rotate(-90deg)", transformOrigin: `${svgCx}px ${svgCy}px` }}
+                                />
+                              ))}
+                              <text x={svgCx} y={svgCy - 7} textAnchor="middle" fill="#f1f5f9" fontSize={24} fontWeight={700} fontFamily="'DM Mono',monospace">{totalRisks}</text>
+                              <text x={svgCx} y={svgCy + 12} textAnchor="middle" fill="#475569" fontSize={10}>Total Risks</text>
+                            </svg>
+                            <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+                              {riskBuckets.map(b => (
+                                <div key={b.label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: b.color, flexShrink: 0, boxShadow: `0 0 5px ${b.color}80` }} />
+                                  <div style={{ flex: 1, fontSize: 12, color: "#94a3b8" }}>{b.label}</div>
+                                  <div style={{ fontSize: 14, fontWeight: 700, color: b.color, fontFamily: "'DM Mono',monospace", minWidth: 20, textAlign: "right" }}>{b.count}</div>
+                                  <div style={{ fontSize: 10, color: "#475569", minWidth: 32, textAlign: "right" }}>{Math.round((b.count / totalRisks) * 100)}%</div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
+
+                    {/* Section: Audit / Production Summary */}
+                    <div style={{ background: "rgba(15,24,40,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "20px 24px" }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8", marginBottom: 14 }}>≡ Audit — Production Snapshot</div>
+                      {!hasAudit ? (
+                        <div style={{ textAlign: "center", padding: "24px 0", color: "#475569", fontSize: 12 }}>No production audit data available for this agent yet.</div>
+                      ) : (() => {
+                        const snapPeriods = [{ key: "1d", label: "Today" }, { key: "7d", label: "7d" }, { key: "30d", label: "30d" }, { key: "mtd", label: "MTD" }, { key: "custom", label: "Custom" }];
+                        const months = { Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12" };
+                        const labelToIso = lbl => { const [m,d] = lbl.split(" "); return `2026-${months[m]}-${String(d).padStart(2,"0")}`; };
+
+                        // Resolve latency data
+                        const customLatDays = dashLatencyPeriod === "custom" && dashLatencyDateFrom && dashLatencyDateTo
+                          ? auditProductionData.latency.allDays.filter(d => { const iso = labelToIso(d.label); return iso >= dashLatencyDateFrom && iso <= dashLatencyDateTo; })
+                          : [];
+                        const latP = dashLatencyPeriod === "custom"
+                          ? { p50: 1.1, p95: 1.8, p99: 2.9, avg: 1.3, trend: customLatDays }
+                          : auditProductionData.latency[dashLatencyPeriod];
+
+                        // Resolve cost data
+                        const allCostDays = [...auditProductionData.cost["30d"].days, ...auditProductionData.cost["1d"].days.filter(d => d.label === "Today")];
+                        const customCostDays = dashCostPeriod === "custom" && dashCostDateFrom && dashCostDateTo
+                          ? auditProductionData.cost["30d"].days.filter(d => { const iso = labelToIso(d.label); return iso >= dashCostDateFrom && iso <= dashCostDateTo; })
+                          : [];
+                        const costP = dashCostPeriod === "custom"
+                          ? { total: customCostDays.reduce((s,d) => s+d.cost,0), runs: 0, tokens: 0, avgPerRun: 0, days: customCostDays }
+                          : auditProductionData.cost[dashCostPeriod];
+
+                        const periodBtn = (key, active, setter) => (
+                          <button key={key} onClick={() => setter(key)} style={{ padding: "2px 8px", fontSize: 10, fontWeight: 600, border: "1px solid", borderColor: active ? "#3b82f6" : "#1e2638", borderRadius: 4, background: active ? "#1e3a5f" : "transparent", color: active ? "#60a5fa" : "#475569", cursor: "pointer" }}>
+                            {snapPeriods.find(p => p.key === key)?.label}
+                          </button>
+                        );
+
+                        // SVG chart dimensions
+                        const VW = 280, VH = 130, ML = 34, MR = 6, MT = 10, MB = 22;
+                        const PW = VW - ML - MR, PH = VH - MT - MB;
+                        const svgStyle = { display: "block", width: "100%", overflow: "visible" };
+
+                        // Y-axis ticks: 4 levels
+                        const yTicks = maxV => [0, 0.33, 0.66, 1].map(f => ({
+                          val: parseFloat((maxV * f).toFixed(1)),
+                          y: MT + PH - f * PH,
+                        }));
+
+                        // X-axis labels (max 5 visible)
+                        const xLabels = (data, labelKey) => {
+                          if (!data.length) return [];
+                          const step = Math.max(1, Math.ceil((data.length - 1) / 4));
+                          return data.map((d, i) => (i % step === 0 || i === data.length - 1)
+                            ? { label: d[labelKey].replace(/^\w+ /, ""), x: ML + (data.length === 1 ? PW / 2 : (i / (data.length - 1)) * PW) }
+                            : null).filter(Boolean);
+                        };
+
+                        const ptX = (data, i) => ML + (data.length === 1 ? PW / 2 : (i / (data.length - 1)) * PW);
+                        const ptY = (val, maxV) => MT + PH - (val / maxV) * PH;
+
+                        const linePoints = (data, key, maxV) =>
+                          data.map((d, i) => `${ptX(data,i)},${ptY(d[key],maxV)}`).join(" ");
+
+                        const areaPath = (data, key, maxV, color) => {
+                          if (!data.length) return null;
+                          const top = data.map((d, i) => `${ptX(data,i)},${ptY(d[key],maxV)}`).join(" ");
+                          const bl = `${ptX(data, data.length-1)},${MT+PH}`;
+                          const br = `${ptX(data, 0)},${MT+PH}`;
+                          return <polygon points={`${top} ${bl} ${br}`} fill={color} />;
+                        };
+
+                        const showLatency = dashLatencyPeriod !== "custom" || (dashLatencyDateFrom && dashLatencyDateTo);
+                        const showCost = dashCostPeriod !== "custom" || (dashCostDateFrom && dashCostDateTo);
+
+                        const inputStyle = { background: "#0a0f1e", border: "1px solid #1e2638", borderRadius: 4, color: "#94a3b8", fontSize: 10, padding: "2px 6px", outline: "none", colorScheme: "dark" };
+
+                        return (
+                          <div style={{ display: "flex", flexDirection: "row", gap: 16 }}>
+                            {/* ── Latency ── */}
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                                <div style={{ fontSize: 11, fontWeight: 700, color: "#475569", textTransform: "uppercase", letterSpacing: "0.6px" }}>Latency</div>
+                                <div style={{ display: "flex", gap: 4, flexWrap: "wrap", justifyContent: "flex-end" }}>
+                                  {snapPeriods.map(p => periodBtn(p.key, dashLatencyPeriod === p.key, setDashLatencyPeriod))}
+                                </div>
+                              </div>
+                              {dashLatencyPeriod === "custom" && (
+                                <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
+                                  <span style={{ fontSize: 10, color: "#475569" }}>From</span>
+                                  <input type="date" value={dashLatencyDateFrom} onChange={e => setDashLatencyDateFrom(e.target.value)} style={inputStyle} />
+                                  <span style={{ fontSize: 10, color: "#475569" }}>To</span>
+                                  <input type="date" value={dashLatencyDateTo} onChange={e => setDashLatencyDateTo(e.target.value)} style={inputStyle} />
+                                </div>
+                              )}
+                              {showLatency && latP.trend.length > 0 ? (() => {
+                                const maxLat = Math.max(...latP.trend.map(d => d.p99), 0.1);
+                                const latYTicks = yTicks(maxLat);
+                                const latXLabels = xLabels(latP.trend, "label");
+                                return (
+                                  <>
+                                    <svg viewBox={`0 0 ${VW} ${VH}`} style={svgStyle}>
+                                      {/* chart background */}
+                                      <rect x={ML} y={MT} width={PW} height={PH} fill="rgba(255,255,255,0.015)" rx="3" />
+                                      {/* grid lines + y labels */}
+                                      {latYTicks.map((t,i) => (
+                                        <g key={i}>
+                                          <line x1={ML} y1={t.y} x2={ML+PW} y2={t.y} stroke="#1e2638" strokeWidth="0.6" strokeDasharray={i===0?"0":"3 3"} />
+                                          <text x={ML-5} y={t.y+3} textAnchor="end" fontSize="7" fill="#475569" fontFamily="monospace">{t.val}s</text>
+                                        </g>
+                                      ))}
+                                      {/* x labels */}
+                                      {latXLabels.map((t,i) => <text key={i} x={t.x} y={VH-5} textAnchor="middle" fontSize="7" fill="#475569">{t.label}</text>)}
+                                      {/* axis lines */}
+                                      <line x1={ML} y1={MT} x2={ML} y2={MT+PH} stroke="#1e2638" strokeWidth="0.8" />
+                                      <line x1={ML} y1={MT+PH} x2={ML+PW} y2={MT+PH} stroke="#1e2638" strokeWidth="0.8" />
+                                      {/* area fills */}
+                                      {areaPath(latP.trend,"p99",maxLat,"rgba(245,158,11,0.06)")}
+                                      {areaPath(latP.trend,"p95",maxLat,"rgba(167,139,250,0.08)")}
+                                      {areaPath(latP.trend,"p50",maxLat,"rgba(52,211,153,0.1)")}
+                                      {/* lines */}
+                                      <polyline points={linePoints(latP.trend,"p99",maxLat)} fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" strokeDasharray="4 2" />
+                                      <polyline points={linePoints(latP.trend,"p95",maxLat)} fill="none" stroke="#a78bfa" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" strokeDasharray="6 2" />
+                                      <polyline points={linePoints(latP.trend,"p50",maxLat)} fill="none" stroke="#34d399" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+                                      {/* dots on every point for p50 */}
+                                      {latP.trend.map((d,i) => <circle key={i} cx={ptX(latP.trend,i)} cy={ptY(d.p50,maxLat)} r="2" fill="#34d399" stroke="#0a0f1e" strokeWidth="0.8" />)}
+                                      {/* end dots for p95/p99 */}
+                                      {[{key:"p99",c:"#f59e0b"},{key:"p95",c:"#a78bfa"}].map(l => {
+                                        const last=latP.trend[latP.trend.length-1];
+                                        return <circle key={l.key} cx={ptX(latP.trend,latP.trend.length-1)} cy={ptY(last[l.key],maxLat)} r="2.5" fill={l.c} stroke="#0a0f1e" strokeWidth="0.8" />;
+                                      })}
+                                    </svg>
+                                    <div style={{ display: "flex", gap: 14, marginTop: 6 }}>
+                                      {[{ color: "#34d399", label: "P50", dash: false },{ color: "#a78bfa", label: "P95", dash: true },{ color: "#f59e0b", label: "P99", dash: true }].map(l => (
+                                        <div key={l.label} style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                                          <svg width="18" height="8"><line x1="0" y1="4" x2="18" y2="4" stroke={l.color} strokeWidth="1.5" strokeDasharray={l.dash?"4 2":"0"} /></svg>
+                                          <span style={{ fontSize: 10, color: "#64748b" }}>{l.label}</span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </>
+                                );
+                              })() : (
+                                <div style={{ textAlign: "center", padding: "16px 0", color: "#334155", fontSize: 11 }}>
+                                  {dashLatencyPeriod === "custom" ? "Select a date range to view data" : "No data"}
+                                </div>
+                              )}
+                            </div>
+
+                            <div style={{ width: 1, background: "#1e2638", flexShrink: 0 }} />
+                            {/* ── Cost ── */}
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                                <div style={{ fontSize: 11, fontWeight: 700, color: "#475569", textTransform: "uppercase", letterSpacing: "0.6px" }}>Cost</div>
+                                <div style={{ display: "flex", gap: 4, flexWrap: "wrap", justifyContent: "flex-end" }}>
+                                  {snapPeriods.map(p => periodBtn(p.key, dashCostPeriod === p.key, setDashCostPeriod))}
+                                </div>
+                              </div>
+                              {dashCostPeriod === "custom" && (
+                                <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
+                                  <span style={{ fontSize: 10, color: "#475569" }}>From</span>
+                                  <input type="date" value={dashCostDateFrom} onChange={e => setDashCostDateFrom(e.target.value)} style={inputStyle} />
+                                  <span style={{ fontSize: 10, color: "#475569" }}>To</span>
+                                  <input type="date" value={dashCostDateTo} onChange={e => setDashCostDateTo(e.target.value)} style={inputStyle} />
+                                </div>
+                              )}
+                              {showCost && costP.days.length > 0 ? (() => {
+                                const maxC = Math.max(...costP.days.map(d => d.cost), 0.1);
+                                const costYTicks = yTicks(maxC);
+                                const costXLabels = xLabels(costP.days, "label");
+                                return (
+                                  <svg viewBox={`0 0 ${VW} ${VH}`} style={svgStyle}>
+                                    {/* chart background */}
+                                    <rect x={ML} y={MT} width={PW} height={PH} fill="rgba(255,255,255,0.015)" rx="3" />
+                                    {/* grid + y labels */}
+                                    {costYTicks.map((t,i) => (
+                                      <g key={i}>
+                                        <line x1={ML} y1={t.y} x2={ML+PW} y2={t.y} stroke="#1e2638" strokeWidth="0.6" strokeDasharray={i===0?"0":"3 3"} />
+                                        <text x={ML-5} y={t.y+3} textAnchor="end" fontSize="7" fill="#475569" fontFamily="monospace">${t.val}</text>
+                                      </g>
+                                    ))}
+                                    {/* x labels */}
+                                    {costXLabels.map((t,i) => <text key={i} x={t.x} y={VH-5} textAnchor="middle" fontSize="7" fill="#475569">{t.label}</text>)}
+                                    {/* axis lines */}
+                                    <line x1={ML} y1={MT} x2={ML} y2={MT+PH} stroke="#1e2638" strokeWidth="0.8" />
+                                    <line x1={ML} y1={MT+PH} x2={ML+PW} y2={MT+PH} stroke="#1e2638" strokeWidth="0.8" />
+                                    {/* gradient area */}
+                                    <defs>
+                                      <linearGradient id="dashCostGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.18" />
+                                        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.01" />
+                                      </linearGradient>
+                                    </defs>
+                                    {areaPath(costP.days,"cost",maxC,"url(#dashCostGrad)")}
+                                    {/* line */}
+                                    <polyline points={linePoints(costP.days,"cost",maxC)} fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+                                    {/* dots */}
+                                    {costP.days.map((d,i) => <circle key={i} cx={ptX(costP.days,i)} cy={ptY(d.cost,maxC)} r="2" fill="#3b82f6" stroke="#0a0f1e" strokeWidth="0.8" />)}
+                                  </svg>
+                                );
+                              })() : (
+                                <div style={{ textAlign: "center", padding: "16px 0", color: "#334155", fontSize: 11 }}>
+                                  {dashCostPeriod === "custom" ? "Select a date range to view data" : "No data"}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })()}
+                    </div>
+
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+
           {/* OTHER VIEWS PLACEHOLDER */}
-          {activeNav !== "registry" && activeNav !== "evaluation" && activeNav !== "testcases" && activeNav !== "cost" && activeNav !== "risk" && (
+          {activeNav !== "registry" && activeNav !== "evaluation" && activeNav !== "testcases" && activeNav !== "cost" && activeNav !== "risk" && activeNav !== "audit" && activeNav !== "dashboard" && (
             <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12, color: "#475569" }}>
               <div style={{ fontSize: 36, opacity: 0.3 }}>{navItems.find(n => n.key === activeNav)?.icon}</div>
               <div style={{ fontSize: 15, fontWeight: 600, color: "#64748b" }}>{navItems.find(n => n.key === activeNav)?.label}</div>
@@ -1540,7 +2565,6 @@ export default function AgentShield() {
                   <div>
                     <p className="desc-text">{detail.description}</p>
                     <div className="meta-grid">
-                      <div className="meta-item"><span className="meta-key">Environment</span><span className="env-badge">{detail.environment}</span></div>
                       <div className="meta-item"><span className="meta-key">Owner</span><span className="meta-val">{detail.owner}</span></div>
                       <div className="meta-item"><span className="meta-key">Created</span><span className="meta-val">{detail.created}</span></div>
                     </div>
@@ -1550,57 +2574,6 @@ export default function AgentShield() {
                     <div className="inner-card">
                       <div style={{ fontSize: 13, color: "#e2e8f0", marginBottom: 6 }}>Model: <span style={{ color: "#60a5fa" }}>{detail.modelSettings.model}</span></div>
                       <div style={{ fontSize: 13, color: "#e2e8f0" }}>Temperature: <span style={{ color: "#64748b" }}>{detail.modelSettings.temp}</span></div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="section-label"><span style={{ color: "#3b82f6" }}>🗄</span> Knowledge Base</div>
-                    <div className="inner-card">
-                      <div className="source-chips">{detail.kb.sources.map(s => <span className="source-chip" key={s}>{s}</span>)}</div>
-                      <div className="grounded-info">✦ {detail.kb.groundedRetrieval}</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="section-label"><span style={{ color: "#3b82f6" }}>🛡</span> Access &amp; Permissions</div>
-                    <div className="inner-card">
-                      <div className="perm-list">
-                        {detail.permissions.map(p => (
-                          <div className="perm-row" key={p.name}>
-                            <span className="perm-name">{p.name}</span>
-                            {p.allowed ? <span className="perm-allowed">✔ {p.level}</span> : <span className="perm-blocked">✕ {p.level}</span>}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="section-label"><span style={{ color: "#3b82f6" }}>⛓</span> Connected Agents</div>
-                    <div className="connected-chips">
-                      {detail.connectedAgents.map(a => (
-                        <div className="agent-chip" key={a.id}>
-                          <span style={{ color: "#60a5fa", fontSize: 13 }}>🔗</span>
-                          <span>{a.name}</span>
-                          <span className="chip-id">{a.id}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="section-label"><span style={{ color: "#3b82f6" }}>⚡</span> MCP Tools (Accessible)</div>
-                    <div className="inner-card">
-                      <div style={{ display: "flex", padding: "8px 12px", borderBottom: "1px solid #1e2638", gap: 0, fontSize: 10, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.7px" }}>
-                        <div style={{ flex: 1 }}>MCP Server</div>
-                        <div style={{ flex: 1 }}>Tool</div>
-                        <div style={{ flex: 1, textAlign: "right" }}>Access</div>
-                      </div>
-                      <div className="actions-list">
-                        {detail.actions.map(ac => (
-                          <div key={ac.tool} style={{ display: "flex", alignItems: "center", padding: "9px 12px", borderTop: "1px solid rgba(30,38,56,0.4)" }}>
-                            <span style={{ flex: 1, fontSize: 12, color: "#cbd5e1" }}>{ac.server}</span>
-                            <span style={{ flex: 1, fontSize: 12, color: "#cbd5e1" }}>{ac.tool}</span>
-                            <span style={{ flex: 1, textAlign: "right", fontSize: 11, color: "#34d399", fontWeight: 600 }}>{ac.status}</span>
-                          </div>
-                        ))}
-                      </div>
                     </div>
                   </div>
                 </>
@@ -1627,6 +2600,53 @@ export default function AgentShield() {
                       </div>
                     </>
                   )}
+                  {/* Knowledge Base */}
+                  <div className="section-label" style={{ marginTop: "20px" }}><span style={{ color: "#3b82f6" }}>🗄</span> Knowledge Base</div>
+                  <div className="inner-card">
+                    <div className="source-chips">{detail.kb.sources.map(s => <span className="source-chip" key={s}>{s}</span>)}</div>
+                    <div className="grounded-info">✦ {detail.kb.groundedRetrieval}</div>
+                  </div>
+                  {/* Access & Permissions */}
+                  <div className="section-label" style={{ marginTop: "20px" }}><span style={{ color: "#3b82f6" }}>🛡</span> Access &amp; Permissions</div>
+                  <div className="inner-card">
+                    <div className="perm-list">
+                      {detail.permissions.map(p => (
+                        <div className="perm-row" key={p.name}>
+                          <span className="perm-name">{p.name}</span>
+                          {p.allowed ? <span className="perm-allowed">✔ {p.level}</span> : <span className="perm-blocked">✕ {p.level}</span>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Connected Agents */}
+                  <div className="section-label" style={{ marginTop: "20px" }}><span style={{ color: "#3b82f6" }}>⛓</span> Connected Agents</div>
+                  <div className="connected-chips">
+                    {detail.connectedAgents.map(a => (
+                      <div className="agent-chip" key={a.id}>
+                        <span style={{ color: "#60a5fa", fontSize: 13 }}>🔗</span>
+                        <span>{a.name}</span>
+                        <span className="chip-id">{a.id}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {/* MCP Tool Accessibility */}
+                  <div className="section-label" style={{ marginTop: "20px" }}><span style={{ color: "#3b82f6" }}>⚡</span> MCP Tools (Accessible)</div>
+                  <div className="inner-card">
+                    <div style={{ display: "flex", padding: "8px 12px", borderBottom: "1px solid #1e2638", gap: 0, fontSize: 10, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.7px" }}>
+                      <div style={{ flex: 1 }}>MCP Server</div>
+                      <div style={{ flex: 1 }}>Tool</div>
+                      <div style={{ flex: 1, textAlign: "right" }}>Access</div>
+                    </div>
+                    <div className="actions-list">
+                      {detail.actions.map(ac => (
+                        <div key={ac.tool} style={{ display: "flex", alignItems: "center", padding: "9px 12px", borderTop: "1px solid rgba(30,38,56,0.4)" }}>
+                          <span style={{ flex: 1, fontSize: 12, color: "#cbd5e1" }}>{ac.server}</span>
+                          <span style={{ flex: 1, fontSize: 12, color: "#cbd5e1" }}>{ac.tool}</span>
+                          <span style={{ flex: 1, textAlign: "right", fontSize: 11, color: "#34d399", fontWeight: 600 }}>{ac.status}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -1702,6 +2722,32 @@ export default function AgentShield() {
                       <div>
                         <div style={fldLabel}>Description</div>
                         <textarea style={{ ...fldInput, resize: "none", lineHeight: 1.5, height: 38 }} rows={1} placeholder="Brief description of agent purpose..." value={registerForm.description} onChange={e => setRegisterForm(p => ({ ...p, description: e.target.value }))} />
+                      </div>
+                    </div>
+
+                  </>
+                )}
+
+                {registerTab === "manifest" && (
+                  <>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                      <div>
+                        <div style={fldLabel}>Version</div>
+                        <input style={fldInput} placeholder="v1.0.0" value={registerForm.version} onChange={e => setRegisterForm(p => ({ ...p, version: e.target.value }))} />
+                      </div>
+                      <div>
+                        <div style={fldLabel}>Approved By</div>
+                        <input style={fldInput} placeholder="approver@company.com" value={registerForm.approvedBy} onChange={e => setRegisterForm(p => ({ ...p, approvedBy: e.target.value }))} />
+                      </div>
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                      <div>
+                        <div style={fldLabel}>Issued Date</div>
+                        <input style={fldInput} type="date" value={registerForm.issued} onChange={e => setRegisterForm(p => ({ ...p, issued: e.target.value }))} />
+                      </div>
+                      <div>
+                        <div style={fldLabel}>Expires Date</div>
+                        <input style={fldInput} type="date" value={registerForm.expires} onChange={e => setRegisterForm(p => ({ ...p, expires: e.target.value }))} />
                       </div>
                     </div>
 
@@ -1794,41 +2840,6 @@ export default function AgentShield() {
                             </div>
                           </div>
                         ))}
-                      </div>
-                    </div>
-                  </>
-                )}
-
-                {registerTab === "manifest" && (
-                  <>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-                      <div>
-                        <div style={fldLabel}>Blueprint ID</div>
-                        <input style={fldInput} placeholder="e.g. BP-HR-ENT-0012" value={registerForm.bpId} onChange={e => setRegisterForm(p => ({ ...p, bpId: e.target.value }))} />
-                      </div>
-                      <div>
-                        <div style={fldLabel}>Blueprint Name</div>
-                        <input style={fldInput} placeholder="e.g. HR Assistant Blueprint" value={registerForm.bpName} onChange={e => setRegisterForm(p => ({ ...p, bpName: e.target.value }))} />
-                      </div>
-                    </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-                      <div>
-                        <div style={fldLabel}>Version</div>
-                        <input style={fldInput} placeholder="v1.0.0" value={registerForm.version} onChange={e => setRegisterForm(p => ({ ...p, version: e.target.value }))} />
-                      </div>
-                      <div>
-                        <div style={fldLabel}>Approved By</div>
-                        <input style={fldInput} placeholder="approver@company.com" value={registerForm.approvedBy} onChange={e => setRegisterForm(p => ({ ...p, approvedBy: e.target.value }))} />
-                      </div>
-                    </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-                      <div>
-                        <div style={fldLabel}>Issued Date</div>
-                        <input style={fldInput} type="date" value={registerForm.issued} onChange={e => setRegisterForm(p => ({ ...p, issued: e.target.value }))} />
-                      </div>
-                      <div>
-                        <div style={fldLabel}>Expires Date</div>
-                        <input style={fldInput} type="date" value={registerForm.expires} onChange={e => setRegisterForm(p => ({ ...p, expires: e.target.value }))} />
                       </div>
                     </div>
                   </>
