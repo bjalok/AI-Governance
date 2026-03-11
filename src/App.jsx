@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 const agents = [
   { id: "REG-HR-20231012", name: "HR Onboarding Agent", platform: "LangGraph", owner: "john.d@company.com", date: "Dec 15, 2025", status: "Active" },
   { id: "REG-FIN-20231013", name: "Financial Auditor", platform: "CrewAI", owner: "sarah.m@company.com", date: "Jan 10, 2026", status: "Inactive" },
-  { id: "REG-CS-20231014", name: "Customer Support Bot", platform: "AutoGen", owner: "sysadmin@company.com", date: "Feb 5, 2026", status: "Suspended" },
+  { id: "REG-CS-20231014", name: "Customer Support Agent", platform: "AutoGen", owner: "sysadmin@company.com", date: "Feb 5, 2026", status: "Suspended" },
   { id: "REG-DEV-20231015", name: "DevOps Config Agent", platform: "Copilot Studio", owner: "devops@company.com", date: "Dec 20, 2025", status: "Active" },
   { id: "REG-LEG-20231016", name: "Legal Doc Parser", platform: "AWS Bedrock", owner: "legal@company.com", date: "Jan 25, 2026", status: "Active" },
   { id: "REG-MKT-20231017", name: "Marketing Content Gen", platform: "LangGraph", owner: "mktg@company.com", date: "Feb 12, 2026", status: "Approval Pending" },
@@ -265,7 +265,7 @@ const riskScenarios = [
 // Per-agent severity scores for each generic risk (score = likelihood × impact, 1–25)
 const agentRiskScores = {
   "HR Onboarding Agent":    { "RS-001":4,  "RS-002":5,  "RS-003":5,  "RS-004":4,  "RS-005":3,  "RS-006":3,  "RS-007":5,  "RS-008":4,  "RS-009":4,  "RS-010":3,  "RS-011":2,  "RS-012":5,  "RS-013":4,  "RS-014":4,  "RS-015":2  },
-  "Customer Support Bot":   { "RS-001":16, "RS-002":25, "RS-003":25, "RS-004":25, "RS-005":20, "RS-006":16, "RS-007":20, "RS-008":16, "RS-009":16, "RS-010":16, "RS-011":9,  "RS-012":20, "RS-013":16, "RS-014":25, "RS-015":12 },
+  "Customer Support Agent":   { "RS-001":16, "RS-002":25, "RS-003":25, "RS-004":25, "RS-005":20, "RS-006":16, "RS-007":20, "RS-008":16, "RS-009":16, "RS-010":16, "RS-011":9,  "RS-012":20, "RS-013":16, "RS-014":25, "RS-015":12 },
   "Financial Auditor":      { "RS-001":15, "RS-002":10, "RS-003":10, "RS-004":10, "RS-005":3,  "RS-006":8,  "RS-007":10, "RS-008":8,  "RS-009":4,  "RS-010":15, "RS-011":2,  "RS-012":10, "RS-013":6,  "RS-014":15, "RS-015":6  },
   "DevOps Config Agent":    { "RS-001":15, "RS-002":15, "RS-003":15, "RS-004":8,  "RS-005":8,  "RS-006":8,  "RS-007":15, "RS-008":15, "RS-009":15, "RS-010":8,  "RS-011":6,  "RS-012":15, "RS-013":12, "RS-014":8,  "RS-015":6  },
   "Legal Doc Parser":       { "RS-001":15, "RS-002":10, "RS-003":10, "RS-004":10, "RS-005":3,  "RS-006":8,  "RS-007":5,  "RS-008":4,  "RS-009":4,  "RS-010":10, "RS-011":2,  "RS-012":5,  "RS-013":3,  "RS-014":10, "RS-015":3  },
@@ -359,7 +359,7 @@ const agentRiskReasons = {
     "RS-014": "The agent enforces HR policies and employment compliance rules during onboarding. Likelihood of a regulatory violation is low; impact is moderate as non-compliant onboarding creates legal exposure for the organisation. Score: 4 → Low.",
     "RS-015": "Onboarding tasks are predictable, bounded, and token-efficient. Budget breach risk is very low given the defined query types and consistent workflow length. Score: 2 → Low.",
   },
-  "Customer Support Bot": {
+  "Customer Support Agent": {
     "RS-001": "High query volume and open-ended, unstructured user inputs create significant hallucination risk. Fabricated product information, policy details, or refund terms delivered to customers cause direct reputational and financial damage at scale. Score: 16 → Critical.",
     "RS-002": "The customer-facing interface is maximally exposed to adversarial users who actively probe for injection vectors. A successful injection could override support policies, escalate privileges, or extract sensitive account data. Maximum risk profile for this attack surface. Score: 25 → Critical.",
     "RS-003": "Public-facing bot with a highly diverse, unsupervised user base is a prime jailbreak target. Bypassing guardrails at this scale results in harmful, policy-violating responses delivered to thousands of customers with no human review. Score: 25 → Critical.",
