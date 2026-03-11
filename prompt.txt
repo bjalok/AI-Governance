@@ -1,0 +1,91 @@
+A high-fidelity enterprise SaaS dashboard UI screenshot for an AI Agent Governance Platform called "AgentShield". Dark theme with deep navy (#0a0f1e) background. Ultra high resolution, pixel-perfect, photorealistic UI mockup, 8K quality, sharp edges, realistic shadows and depth. Inter font. Figma-quality, professional enterprise software, similar to Datadog or Linear design system. Glassmorphism cards with subtle borders.
+LEFT SIDEBAR NAVIGATION:
+Fixed dark sidebar (#0d1324) with the AgentShield logo (shield icon + wordmark) at top. Navigation sections with icons:
+Section label "GOVERNANCE": Dashboard, Agent Registry (currently active, highlighted in blue), Evaluation, Pre-Flight Checks, Risk Engine, Audit Trail, Cost Governance. Active item has a blue left border accent and blue icon glow.
+MAIN CONTENT — AGENT REGISTRY PAGE:
+Header bar: "Agent Registry" title on left in white bold. Blue "+ Register New Agent" button on right with plus icon.
+Below header, 4 KPI stat cards horizontal row with glassmorphism effect and subtle top glow line:
+
+"Total Agents Registered: 247" with users icon in blue
+"Active: 189" with checkmark icon in green
+"Pending Review: 31" with clock icon in amber
+"Retired: 27" with X icon in slate gray
+
+Below KPIs, a titled section "Registered Agents Directory" with a dark table panel. Sortable data table with columns: Agent ID, Agent Name, Platform, Created By, Date Created, Status, Actions. Show 6 rows:
+Row 1: AGT-0041 | HR Onboarding Agent | LangGraph | john.d@company.com | Oct 12 2023 | Active (green badge)
+Row 2: AGT-0042 | Financial Auditor | CrewAI | sarah.m@company.com | Oct 14 2023 | Pending (amber badge)
+Row 3: AGT-0038 | Customer Support Bot | AutoGen | sysadmin@company.com | Sep 28 2023 | Suspended (red badge)
+Row 4: AGT-0045 | DevOps Config Agent | Copilot Studio | devops@company.com | Oct 15 2023 | Active (green badge)
+Row 5: AGT-0029 | Legal Doc Parser | AWS Bedrock | legal@company.com | Aug 10 2023 | Active (green badge)
+Row 6: AGT-0050 | Marketing Content Gen | LangGraph | mktg@company.com | Oct 18 2023 | Pending (amber badge)
+Agent IDs are clickable blue monospace hyperlinks. Status shown as color-coded pill badges only. NO risk score column anywhere in the table.
+RIGHT SLIDE-OUT DETAIL PANEL (450px wide):
+Triggered by clicking AGT-0041. Dark panel (#0d1324) with left border shadow. Panel header shows:
+
+Blue monospace tag "AGT-0041" with a green verified checkmark badge labeled "Verified"
+Agent name "HR Onboarding Agent" in large white bold text
+ONE single tab only: "Overview" with a solid blue underline beneath it indicating active state. No other tabs. No tab row. Just the single word "Overview" underlined in blue as a section label beneath the agent name.
+
+OVERVIEW CONTENT (scrollable):
+Section 1 — AGENT METADATA:
+
+Short description paragraph: "Handles automated onboarding workflows for new hires, including IT provisioning, HR documentation collection, and initial department orientation scheduling."
+2x2 grid of metadata chips:
+
+Environment: purple "Production" pill badge
+Model Settings: "GPT-4o (Temp: 0.2)" in white
+Owner: john.d@company.com
+Created: Oct 12, 2023
+
+
+
+Section 2 — KNOWLEDGE BASE (labeled with database icon):
+Dark inner card showing:
+
+Knowledge Base Name: "HR Knowledge Base"
+Sources listed as small chips: "SharePoint — HR Policies", "Azure Blob — Employee Handbook", "Azure AI Search — FAQ Index"
+Retrieval Model: GPT-4o
+A small info line: "Grounded retrieval enabled — 3 sources connected"
+
+Section 3 — AGENT BLUEPRINT ID:
+Dark inner card showing:
+
+Blueprint ID in blue monospace font: "BP-HR-ENT-0012"
+Blueprint Name: "HR Assistant Blueprint"
+Linked Agents count: "3 agent identities"
+A small tag: "Shared Template"
+
+Section 4 — ACCESS & PERMISSIONS (labeled with shield icon):
+Dark inner card showing a permission list:
+
+Microsoft Graph: Read — green checkmark pill
+SharePoint Files: Read Only — green checkmark pill
+Email: Send — green checkmark pill
+Payroll Data: BLOCKED — red X pill
+OPS Systems: BLOCKED — red X pill
+
+Section 5 — CONNECTED AGENTS:
+Two linked agent chips side by side:
+
+"IT Provisioning Agent — AGT-0012" with chain link icon
+"Slack Notifier — AGT-0005" with chain link icon
+
+Section 6 — DECLARED ACTIONS (TOOLS):
+Three rows each with green checkmark and "Permitted" label on right:
+
+read_employee_record
+send_welcome_email
+create_onboarding_ticket
+
+BOTTOM PANEL — AGENT REGISTRY STATUS:
+Titled "Agent Registry Status" with activity icon. Visual checklist only — NO risk score, NO progress bar:
+
+Registration ID: REG-HR-20231012 — green "Verified" label
+Capability Manifest — "Complete" label
+Access Control Policy — "Assigned" label
+Blueprint Linked — "BP-HR-ENT-0012 Active" label
+
+Each checklist item has a green checkmark icon on the left and a status label on the right. Clean minimal list, no bars, no scores, no numbers.
+EVALUATION TAB (visible in sidebar):
+In the left sidebar under Agent Registry nav item, show a secondary indented sub-item called "Evaluation" with a beaker/flask icon, slightly indented and in slate color indicating it is a separate accessible section.
+UI style consistent throughout: deep navy backgrounds, slate borders (#1e2638), blue accent (#3b82f6), glassmorphism cards, subtle gradient glow lines on card tops, monospace fonts for IDs, Inter font for all labels. Professional pixel-perfect enterprise SaaS aesthetic. No blur. Photorealistic. 8K. Absolutely no risk score, no risk badge, no risk progress bar anywhere in the entire UI. Only ONE tab exists in the detail panel which is Overview — no Blueprint tab, no Access Control tab, no Connections tab, no Actions tab anywhere visible.
