@@ -285,7 +285,7 @@ const runtimeSignals = {
       "RS-002": { source: "Audit Logs", signal: "3 injection patterns detected in 7-day prod window — inputs route through internal portal but structured HR form fields remain exploitable; prompt hardening partially applied" },
       "RS-003": { source: "Agent Config", signal: "Safety guardrails active — 0 jailbreak events in 318 prod runs" },
       "RS-004": { source: "Agent Config + Manifest", signal: "PII scoped to HR namespace, however employee records include SSN fragments, salary bands, and medical leave data — 2 over-fetched record payloads detected in audit; Payroll write access BLOCKED" },
-      "RS-005": { source: "Evaluation Metrics", signal: "0 toxic outputs across all 23 evaluation runs" },
+      "RS-005": { source: "Evaluation Metrics", signal: "0 toxic outputs across all 23 evaluation runs", noIssue: true },
       "RS-006": { source: "Evaluation Metrics", signal: "Context Faithfulness 88.4% — low demographic bias signal detected" },
       "RS-007": { source: "Agent Manifest", signal: "3 permitted tools — 0 out-of-scope invocations in 1,941 audit calls" },
       "RS-008": { source: "Audit Logs", signal: "All 1,941 tool calls within permitted SharePoint / Workday boundary" },
@@ -1440,10 +1440,12 @@ export default function AgentShield() {
                                 const isScanning = riskRunning && riskScanIdx === idx;
                                 const isScanned  = riskRunning && riskScanIdx > idx;
                                 const rowOpacity = riskRunning ? (isScanning || isScanned ? 1 : 0.3) : 1;
+                                const sigEntry = runtimeSignals[riskAgent]?.risks?.[r.id];
+                                const isNoIssue = sigEntry?.noIssue === true;
                                 return (
                                   <tr key={r.id}
                                     style={{ cursor: "pointer", opacity: rowOpacity, transition: "opacity 0.15s", background: isScanning ? "rgba(59,130,246,0.06)" : undefined }}
-                                    onClick={() => !riskRunning && setRiskDetailModal({ r, score, sc, bk, agentName })}>
+                                    onClick={() => !riskRunning && setRiskDetailModal({ r, score, sc, bk, agentName, agentId: riskAgent })}>
                                     <td>
                                       <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                                         {isScanning && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#60a5fa", display: "inline-block", flexShrink: 0, boxShadow: "0 0 6px #60a5fa" }} />}
@@ -1457,9 +1459,13 @@ export default function AgentShield() {
                                       </span>
                                     </td>
                                     <td>
-                                      <span style={{ fontSize:11, padding:"2px 8px", borderRadius:20, background:`${sc}18`, color:sc, border:`1px solid ${sc}30`, fontWeight:700 }}>
-                                        {bk}
-                                      </span>
+                                      {isNoIssue ? (
+                                        <span style={{ fontSize:11, padding:"2px 8px", borderRadius:20, background:"rgba(52,211,153,0.1)", color:"#34d399", border:"1px solid rgba(52,211,153,0.25)", fontWeight:700, whiteSpace:"nowrap" }}>No Issues Detected</span>
+                                      ) : (
+                                        <span style={{ fontSize:11, padding:"2px 8px", borderRadius:20, background:`${sc}18`, color:sc, border:`1px solid ${sc}30`, fontWeight:700 }}>
+                                          {bk}
+                                        </span>
+                                      )}
                                     </td>
                                   </tr>
                                 );
@@ -1481,12 +1487,14 @@ export default function AgentShield() {
 
               {/* Risk Detail Modal */}
               {riskDetailModal && (() => {
-                const { r, sc, bk, agentName: an } = riskDetailModal;
+                const { r, sc, bk, agentName: an, agentId: aid } = riskDetailModal;
                 const reason = (agentRiskReasons[an]?.[r.id] || "No detailed reasoning available for this agent and risk combination.").replace(/ Score: \d+ → \w+\.$/, "");
                 const typeColors = { Security:"#ef4444", Compliance:"#f59e0b", Governance:"#a78bfa", Operational:"#60a5fa", Privacy:"#34d399", Financial:"#fbbf24" };
+                const sigEntry = runtimeSignals[aid]?.risks?.[r.id];
+                const noIssue = sigEntry?.noIssue === true;
                 return (
                   <div style={{ position:"fixed", inset:0, background:"rgba(0,0,0,0.65)", display:"flex", alignItems:"center", justifyContent:"center", zIndex:1000 }} onClick={() => setRiskDetailModal(null)}>
-                    <div style={{ background:"#0f1829", border:"1px solid #1e2638", borderRadius:14, padding:28, width:560, maxWidth:"95vw", boxShadow:"0 24px 64px rgba(0,0,0,0.5)" }} onClick={e => e.stopPropagation()}>
+                    <div style={{ background:"#0f1829", border:"1px solid #1e2638", borderRadius:14, padding:28, width:580, maxWidth:"95vw", boxShadow:"0 24px 64px rgba(0,0,0,0.5)" }} onClick={e => e.stopPropagation()}>
                       {/* Header */}
                       <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:18 }}>
                         <div>
@@ -1500,6 +1508,17 @@ export default function AgentShield() {
                         <span style={{ fontSize:11, padding:"3px 10px", borderRadius:20, background:`${typeColors[r.type]}18`, color:typeColors[r.type], border:`1px solid ${typeColors[r.type]}30`, fontWeight:600 }}>{r.type}</span>
                         <span style={{ fontSize:11, padding:"3px 10px", borderRadius:20, background:`${sc}18`, color:sc, border:`1px solid ${sc}30`, fontWeight:700 }}>{bk}</span>
                       </div>
+                      {/* Runtime Signal */}
+                      {sigEntry && (
+                        <div style={{ marginBottom:20, background: noIssue ? "rgba(52,211,153,0.05)" : "rgba(245,158,11,0.05)", border: `1px solid ${noIssue ? "rgba(52,211,153,0.15)" : "rgba(245,158,11,0.15)"}`, borderRadius:8, padding:"12px 14px" }}>
+                          <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:6 }}>
+                            <span style={{ fontSize:11, color: noIssue ? "#34d399" : "#f59e0b" }}>{noIssue ? "✓" : "⚠"}</span>
+                            <span style={{ fontSize:11, fontWeight:700, color: noIssue ? "#34d399" : "#f59e0b", textTransform:"uppercase", letterSpacing:"0.6px" }}>{noIssue ? "No Issues Detected" : "Issues Detected"}</span>
+                            <span style={{ marginLeft:"auto", fontSize:10, color:"#475569", fontFamily:"'DM Mono',monospace" }}>src: {sigEntry.source}</span>
+                          </div>
+                          <div style={{ fontSize:12, color:"#94a3b8", lineHeight:1.6 }}>{sigEntry.signal}</div>
+                        </div>
+                      )}
                       {/* Reasoning */}
                       <div>
                         <div style={{ fontSize:11, fontWeight:700, color:"#475569", textTransform:"uppercase", letterSpacing:"0.7px", marginBottom:8 }}>Severity Rationale — {an}</div>
@@ -2882,11 +2901,12 @@ export default function AgentShield() {
                 </div>
                 {/* Table */}
                 <div style={{ overflowY: "auto", overflowX: "auto", flex: 1 }}>
-                  <table className="tc-gen-table" style={{ minWidth: 1060 }}>
+                  <table className="tc-gen-table" style={{ minWidth: 1200 }}>
                     <thead>
                       <tr>
                         <th style={{ width: 80 }}>TC ID</th>
                         <th style={{ width: 75 }}>Intent ID</th>
+                        <th style={{ minWidth: 160 }}>Query</th>
                         <th style={{ minWidth: 180 }}>Expected Output</th>
                         <th style={{ minWidth: 150 }}>Context</th>
                         <th style={{ minWidth: 160 }}>Tool Invoked</th>
@@ -2899,6 +2919,7 @@ export default function AgentShield() {
                         <tr key={tc.id}>
                           <td>{tc.id}</td>
                           <td><span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#60a5fa" }}>{tc.intentId || "—"}</span></td>
+                          <td style={{ color: "#cbd5e1" }}>{tc.query || "—"}</td>
                           <td>{tc.expectedOutput}</td>
                           <td style={{ fontSize: 11, color: "#64748b" }}>{tc.context}</td>
                           <td>
