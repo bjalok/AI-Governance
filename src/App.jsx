@@ -264,7 +264,7 @@ const riskScenarios = [
 
 // Per-agent severity scores for each generic risk (score = likelihood × impact, 1–25)
 const agentRiskScores = {
-  "HR Onboarding Agent":    { "RS-001":4,  "RS-002":5,  "RS-003":5,  "RS-004":4,  "RS-005":3,  "RS-006":3,  "RS-007":5,  "RS-008":4,  "RS-009":4,  "RS-010":3,  "RS-011":2,  "RS-012":5,  "RS-013":4,  "RS-014":4,  "RS-015":2  },
+  "HR Onboarding Agent":    { "RS-001":4,  "RS-002":6,  "RS-003":5,  "RS-004":8,  "RS-005":3,  "RS-006":4,  "RS-007":5,  "RS-008":4,  "RS-009":6,  "RS-010":3,  "RS-011":2,  "RS-012":5,  "RS-013":4,  "RS-014":6,  "RS-015":2  },
   "Customer Support Agent":   { "RS-001":16, "RS-002":25, "RS-003":25, "RS-004":25, "RS-005":20, "RS-006":16, "RS-007":20, "RS-008":16, "RS-009":16, "RS-010":16, "RS-011":9,  "RS-012":20, "RS-013":16, "RS-014":25, "RS-015":12 },
   "Financial Auditor":      { "RS-001":15, "RS-002":10, "RS-003":10, "RS-004":10, "RS-005":3,  "RS-006":8,  "RS-007":10, "RS-008":8,  "RS-009":4,  "RS-010":15, "RS-011":2,  "RS-012":10, "RS-013":6,  "RS-014":15, "RS-015":6  },
   "DevOps Config Agent":    { "RS-001":15, "RS-002":15, "RS-003":15, "RS-004":8,  "RS-005":8,  "RS-006":8,  "RS-007":15, "RS-008":15, "RS-009":15, "RS-010":8,  "RS-011":6,  "RS-012":15, "RS-013":12, "RS-014":8,  "RS-015":6  },
@@ -282,19 +282,19 @@ const runtimeSignals = {
     lastRun: "Mar 11, 2026 · 09:14 UTC",
     risks: {
       "RS-001": { source: "Evaluation Metrics", signal: "Hallucination Score: 0.06 — 1 incident across 20 test cases" },
-      "RS-002": { source: "Audit Logs", signal: "1 injection pattern detected in 7-day prod window; system prompt hardened" },
+      "RS-002": { source: "Audit Logs", signal: "3 injection patterns detected in 7-day prod window — inputs route through internal portal but structured HR form fields remain exploitable; prompt hardening partially applied" },
       "RS-003": { source: "Agent Config", signal: "Safety guardrails active — 0 jailbreak events in 318 prod runs" },
-      "RS-004": { source: "Agent Config + Manifest", signal: "PII scoped to HR namespace; Payroll data explicitly BLOCKED" },
+      "RS-004": { source: "Agent Config + Manifest", signal: "PII scoped to HR namespace, however employee records include SSN fragments, salary bands, and medical leave data — 2 over-fetched record payloads detected in audit; Payroll write access BLOCKED" },
       "RS-005": { source: "Evaluation Metrics", signal: "0 toxic outputs across all 23 evaluation runs" },
       "RS-006": { source: "Evaluation Metrics", signal: "Context Faithfulness 88.4% — low demographic bias signal detected" },
       "RS-007": { source: "Agent Manifest", signal: "3 permitted tools — 0 out-of-scope invocations in 1,941 audit calls" },
       "RS-008": { source: "Audit Logs", signal: "All 1,941 tool calls within permitted SharePoint / Workday boundary" },
-      "RS-009": { source: "Agent Config", signal: "Human approval gate enforced before create_onboarding_ticket execution" },
+      "RS-009": { source: "Agent Config", signal: "Human approval gate enforced before create_onboarding_ticket execution; however calendar invite and welcome email tools execute autonomously — 278 auto-dispatched actions logged in 7-day window" },
       "RS-010": { source: "Audit Logs", signal: "Knowledge base last synced Mar 10, 2026 — 1 day delta detected" },
       "RS-011": { source: "Audit Logs", signal: "0 recursive loop events across 7-day production window (P99: 2.9s)" },
       "RS-012": { source: "Agent Config", signal: "Secrets managed via Azure Key Vault — absent from all tool response payloads" },
       "RS-013": { source: "Audit Logs", signal: "Session isolation enabled — no cross-session context leakage detected" },
-      "RS-014": { source: "Agent Config", signal: "GDPR & SOC2 compliance checks active; legal@company.com is compliance owner" },
+      "RS-014": { source: "Agent Config", signal: "GDPR & SOC2 compliance checks active; however onboarding data retention policy has not been reviewed since Oct 2024 — legal@company.com notified, review pending 41 days" },
       "RS-015": { source: "Audit Logs", signal: "Avg cost/run $0.39 — 7d total $112.74 vs $200 budget (56% used)" },
     },
   },
