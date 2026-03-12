@@ -1508,17 +1508,6 @@ export default function AgentShield() {
                         <span style={{ fontSize:11, padding:"3px 10px", borderRadius:20, background:`${typeColors[r.type]}18`, color:typeColors[r.type], border:`1px solid ${typeColors[r.type]}30`, fontWeight:600 }}>{r.type}</span>
                         <span style={{ fontSize:11, padding:"3px 10px", borderRadius:20, background:`${sc}18`, color:sc, border:`1px solid ${sc}30`, fontWeight:700 }}>{bk}</span>
                       </div>
-                      {/* Runtime Signal */}
-                      {sigEntry && (
-                        <div style={{ marginBottom:20, background: noIssue ? "rgba(52,211,153,0.05)" : "rgba(245,158,11,0.05)", border: `1px solid ${noIssue ? "rgba(52,211,153,0.15)" : "rgba(245,158,11,0.15)"}`, borderRadius:8, padding:"12px 14px" }}>
-                          <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:6 }}>
-                            <span style={{ fontSize:11, color: noIssue ? "#34d399" : "#f59e0b" }}>{noIssue ? "✓" : "⚠"}</span>
-                            <span style={{ fontSize:11, fontWeight:700, color: noIssue ? "#34d399" : "#f59e0b", textTransform:"uppercase", letterSpacing:"0.6px" }}>{noIssue ? "No Issues Detected" : "Issues Detected"}</span>
-                            <span style={{ marginLeft:"auto", fontSize:10, color:"#475569", fontFamily:"'DM Mono',monospace" }}>src: {sigEntry.source}</span>
-                          </div>
-                          <div style={{ fontSize:12, color:"#94a3b8", lineHeight:1.6 }}>{sigEntry.signal}</div>
-                        </div>
-                      )}
                       {/* Reasoning */}
                       <div>
                         <div style={{ fontSize:11, fontWeight:700, color:"#475569", textTransform:"uppercase", letterSpacing:"0.7px", marginBottom:8 }}>Severity Rationale — {an}</div>
