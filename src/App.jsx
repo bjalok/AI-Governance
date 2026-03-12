@@ -28,6 +28,47 @@ const agentDetails = {
       { server: "workday-mcp", tool: "create_onboarding_ticket", status: "Active" },
     ],
   },
+  "REG-FIN-20231013": {
+    description: "Analyzes financial documents, ERP transaction logs, and ledger records to generate audit findings, flag anomalies, and produce compliance reports for internal and external review.",
+    environment: "Staging", owner: "sarah.m@company.com", created: "Jan 10, 2026",
+    modelSettings: { model: "GPT-4o", temp: "0.1" },
+    kb: { name: "Knowledge Base", sources: ["SharePoint — Finance Policies", "SAP ERP — General Ledger", "Azure Blob — Annual Reports", "Azure AI Search — Compliance Index"], groundedRetrieval: "enabled — 4 sources connected" },
+    blueprint: { id: "BP-FIN-ENT-0031", name: "Financial Audit Blueprint", linked: 2 },
+    permissions: [
+      { name: "SAP ERP — Transactions", level: "Read Only", allowed: true },
+      { name: "Azure SQL — Financial Records", level: "Read Only", allowed: true },
+      { name: "SharePoint — Audit Reports", level: "Read Only", allowed: true },
+      { name: "Write / Modify Records", level: "BLOCKED", allowed: false },
+    ],
+    connectedAgents: [{ name: "Compliance Reporting Agent", id: "REG-COMP-20231020" }, { name: "Alert Dispatcher", id: "REG-ALERT-20231021" }],
+    actions: [
+      { server: "sap-erp-mcp", tool: "read_transaction_log", status: "Active" },
+      { server: "azure-sql-mcp", tool: "query_financial_records", status: "Active" },
+      { server: "sharepoint-mcp", tool: "read_document", status: "Active" },
+      { server: "microsoft-graph-mcp", tool: "send_report_email", status: "Active" },
+    ],
+  },
+  "REG-CS-20231014": {
+    description: "Handles customer queries via live chat and email, including order tracking, refund processing, and account management. Suspended pending security review following prompt injection incidents.",
+    environment: "Production", owner: "sysadmin@company.com", created: "Feb 5, 2026",
+    modelSettings: { model: "GPT-4o", temp: "0.7" },
+    kb: { name: "Knowledge Base", sources: ["Zendesk — Knowledge Base", "Shopify — Product Catalogue", "Confluence — Returns Policy", "Azure AI Search — FAQ"], groundedRetrieval: "enabled — 4 sources connected" },
+    blueprint: { id: "BP-CS-ENT-0047", name: "Customer Support Blueprint", linked: 4 },
+    permissions: [
+      { name: "Salesforce CRM — Customer Records", level: "Read Only", allowed: true },
+      { name: "Shopify — Order Management", level: "Read / Write", allowed: true },
+      { name: "Zendesk — Support Tickets", level: "Read / Write", allowed: true },
+      { name: "Stripe — Payment Data", level: "BLOCKED", allowed: false },
+    ],
+    connectedAgents: [{ name: "Escalation Agent", id: "REG-ESC-20231022" }, { name: "Email Notifier", id: "REG-EMAIL-20231023" }],
+    actions: [
+      { server: "salesforce-mcp", tool: "read_customer_record", status: "Active" },
+      { server: "shopify-mcp", tool: "get_order_status", status: "Active" },
+      { server: "zendesk-mcp", tool: "create_support_ticket", status: "Active" },
+      { server: "shopify-mcp", tool: "process_refund", status: "Active" },
+      { server: "stripe-mcp", tool: "read_payment_method", status: "Suspended" },
+    ],
+  },
 };
 
 const evalData = {
@@ -533,6 +574,7 @@ function RadialGauge({ value, max, color, label }) {
 export default function AgentShield() {
   const [activeNav, setActiveNav] = useState("registry");
   const [selected, setSelected] = useState("REG-HR-20231012");
+  const [showAgentModal, setShowAgentModal] = useState(false);
   const [evalAgent, setEvalAgent] = useState("");
   const [running, setRunning] = useState(false);
   const [ran, setRan] = useState(false);
@@ -619,6 +661,7 @@ export default function AgentShield() {
       },
     }));
     setSelected(id);
+    setShowAgentModal(true);
     setActiveNav("registry");
     setShowRegisterModal(false);
     setRegisterForm(emptyRegisterForm);
@@ -930,7 +973,7 @@ export default function AgentShield() {
                     {allAgents.map(a => {
                       const s = statusStyles[a.status];
                       return (
-                        <tr key={a.id} className={selected === a.id ? "selected" : ""} onClick={() => setSelected(a.id)}>
+                        <tr key={a.id} className={selected === a.id ? "selected" : ""} onClick={() => { setSelected(a.id); setShowAgentModal(true); }}>
                           <td><span className="agent-id">{a.id}</span></td>
                           <td><span className="agent-name">{a.name}</span></td>
                           <td><div className="platform-cell"><div className="platform-dot" />{a.platform}</div></td>
@@ -2550,13 +2593,15 @@ export default function AgentShield() {
           )}
         </main>
 
-        {/* RIGHT PANEL — only on registry */}
-        {activeNav === "registry" && detail && (
-          <aside className="panel">
-            <div className="panel-header">
+        {/* AGENT DETAIL MODAL — registry */}
+        {activeNav === "registry" && showAgentModal && detail && (
+          <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.65)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1100 }} onClick={() => setShowAgentModal(false)}>
+          <aside className="panel" style={{ position: "relative", width: "90vw", maxWidth: 900, height: "90vh", borderRadius: 14, display: "flex", flexDirection: "column", boxShadow: "0 24px 64px rgba(0,0,0,0.6)" }} onClick={e => e.stopPropagation()}>
+            <div className="panel-header" style={{ flexShrink: 0 }}>
               <div className="panel-tag-row">
                 <span className="panel-id-tag">{selected}</span>
                 <span className="verified-badge">✔ Verified</span>
+                <button onClick={() => setShowAgentModal(false)} style={{ marginLeft: "auto", background: "transparent", border: "none", color: "#475569", cursor: "pointer", fontSize: 18, lineHeight: 1 }}>✕</button>
               </div>
               <div className="panel-agent-name">{allAgents.find(a => a.id === selected)?.name}</div>
               <div style={{ display: "flex", gap: 0, marginBottom: "-1px", marginTop: 8 }}>
@@ -2567,7 +2612,7 @@ export default function AgentShield() {
                 ))}
               </div>
             </div>
-            <div className="panel-body">
+            <div className="panel-body" style={{ overflowY: "auto", flex: 1 }}>
               {activeTab === "overview" && (
                 <>
                   <div>
@@ -2667,6 +2712,7 @@ export default function AgentShield() {
               </div>
             </div>
           </aside>
+          </div>
         )}
 
         {/* CREATE RISK SCENARIO MODAL */}
