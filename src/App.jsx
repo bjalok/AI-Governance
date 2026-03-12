@@ -1927,7 +1927,7 @@ export default function AgentShield() {
                           {/* Latency by tool */}
                           <div style={{ background: "rgba(17,23,39,0.9)", border: "1px solid #1e2638", borderRadius: 12 }}>
                             <div className="tc-header">
-                              <span className="tc-title">⏱ Latency by MCP Tool — Production</span>
+                              <span className="tc-title">⏱ Latency by MCP Tool — Production (Last 30 Days)</span>
                               <span style={{ fontSize: 11, color: "#64748b" }}>HR Onboarding Agent · {auditProductionData.latency.byTool.reduce((s, t) => s + t.calls, 0).toLocaleString()} total calls</span>
                             </div>
                             <div style={{ overflowX: "auto" }}>
@@ -2053,7 +2053,7 @@ export default function AgentShield() {
                     {/* Cost by tool */}
                     <div style={{ background: "rgba(17,23,39,0.9)", border: "1px solid #1e2638", borderRadius: 12 }}>
                       <div className="tc-header">
-                        <span className="tc-title">⚡ Cost by MCP Tool — Production (All Time)</span>
+                        <span className="tc-title">⚡ Cost by MCP Tool — Production (Last 30 Days)</span>
                         <span style={{ fontSize: 11, color: "#64748b" }}>{auditProductionData.cost.byTool.length} tools · ${totalToolCost.toFixed(2)} total</span>
                       </div>
                       <div style={{ overflowX: "auto" }}>
