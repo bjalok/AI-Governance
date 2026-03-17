@@ -2717,20 +2717,28 @@ export default function AgentShield() {
                       return (
                         <div style={{ background: "rgba(15,24,40,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "20px 24px" }}>
                           <div style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8", marginBottom: 18 }}>◈ Risk Profile — {daName}</div>
-                          <div style={{ display: "flex", alignItems: "center", gap: 28, maxWidth: 460 }}>
-                            <svg width={170} height={170} viewBox="0 0 160 160" style={{ flexShrink: 0 }}>
-                              <circle cx={svgCx} cy={svgCy} r={svgR} fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth={20} />
-                              {segments.map((seg, i) => seg.len > 0 && (
-                                <circle key={i} cx={svgCx} cy={svgCy} r={svgR}
-                                  fill="none" stroke={seg.color} strokeWidth={20}
-                                  strokeDasharray={`${seg.len - 1.5} ${circ - seg.len + 1.5}`}
-                                  strokeDashoffset={-seg.offset}
-                                  style={{ transform: "rotate(-90deg)", transformOrigin: `${svgCx}px ${svgCy}px` }}
-                                />
-                              ))}
-                              <text x={svgCx} y={svgCy - 7} textAnchor="middle" fill="#0d1324" fontSize={24} fontWeight={700} fontFamily="'DM Mono',monospace">{totalRisks}</text>
-                              <text x={svgCx} y={svgCy + 12} textAnchor="middle" fill="#475569" fontSize={10}>Total Risks</text>
-                            </svg>
+                          <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+                            <div style={{ position: "relative", width: 170, height: 170, flexShrink: 0 }}>
+                              <ResponsiveContainer width={170} height={170}>
+                                <PieChart>
+                                  <Pie data={riskBuckets.map(b => ({ name: b.label, value: b.count, color: b.color }))}
+                                    cx="50%" cy="50%" innerRadius={48} outerRadius={72}
+                                    paddingAngle={2} dataKey="value" strokeWidth={0}>
+                                    {riskBuckets.map((b, i) => <Cell key={i} fill={b.color} />)}
+                                  </Pie>
+                                  <Tooltip
+                                    contentStyle={{ background: "#0d1324", border: "1px solid #2a3449", borderRadius: 8, fontSize: 11, color: "#f1f5f9" }}
+                                    labelStyle={{ color: "#e2e8f0", fontWeight: 700 }}
+                                    itemStyle={{ color: "#f1f5f9" }}
+                                    formatter={(v, n) => [`${v} (${Math.round((v / totalRisks) * 100)}%)`, n]}
+                                  />
+                                </PieChart>
+                              </ResponsiveContainer>
+                              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", textAlign: "center", pointerEvents: "none" }}>
+                                <div style={{ fontSize: 22, fontWeight: 700, color: "#f1f5f9", fontFamily: "'DM Mono',monospace", lineHeight: 1 }}>{totalRisks}</div>
+                                <div style={{ fontSize: 9, color: "#475569", marginTop: 3 }}>Total Risks</div>
+                              </div>
+                            </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
                               {riskBuckets.map(b => (
                                 <div key={b.label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -2773,20 +2781,28 @@ export default function AgentShield() {
                       return (
                         <div style={{ background: "rgba(15,24,40,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "20px 24px" }}>
                           <div style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8", marginBottom: 18 }}>◈ Risk Summary</div>
-                          <div style={{ display: "flex", alignItems: "center", gap: 28, maxWidth: 460 }}>
-                            <svg width={170} height={170} viewBox="0 0 160 160" style={{ flexShrink: 0 }}>
-                              <circle cx={svgCx} cy={svgCy} r={svgR} fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth={20} />
-                              {segments.map((seg, i) => seg.len > 0 && (
-                                <circle key={i} cx={svgCx} cy={svgCy} r={svgR}
-                                  fill="none" stroke={seg.color} strokeWidth={20}
-                                  strokeDasharray={`${seg.len - 1.5} ${circ - seg.len + 1.5}`}
-                                  strokeDashoffset={-seg.offset}
-                                  style={{ transform: "rotate(-90deg)", transformOrigin: `${svgCx}px ${svgCy}px` }}
-                                />
-                              ))}
-                              <text x={svgCx} y={svgCy - 7} textAnchor="middle" fill="#0d1324" fontSize={24} fontWeight={700} fontFamily="'DM Mono',monospace">{totalRisks}</text>
-                              <text x={svgCx} y={svgCy + 12} textAnchor="middle" fill="#475569" fontSize={10}>Total Risks</text>
-                            </svg>
+                          <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+                            <div style={{ position: "relative", width: 170, height: 170, flexShrink: 0 }}>
+                              <ResponsiveContainer width={170} height={170}>
+                                <PieChart>
+                                  <Pie data={riskBuckets.map(b => ({ name: b.label, value: b.count, color: b.color }))}
+                                    cx="50%" cy="50%" innerRadius={48} outerRadius={72}
+                                    paddingAngle={2} dataKey="value" strokeWidth={0}>
+                                    {riskBuckets.map((b, i) => <Cell key={i} fill={b.color} />)}
+                                  </Pie>
+                                  <Tooltip
+                                    contentStyle={{ background: "#0d1324", border: "1px solid #2a3449", borderRadius: 8, fontSize: 11, color: "#f1f5f9" }}
+                                    labelStyle={{ color: "#e2e8f0", fontWeight: 700 }}
+                                    itemStyle={{ color: "#f1f5f9" }}
+                                    formatter={(v, n) => [`${v} (${Math.round((v / totalRisks) * 100)}%)`, n]}
+                                  />
+                                </PieChart>
+                              </ResponsiveContainer>
+                              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", textAlign: "center", pointerEvents: "none" }}>
+                                <div style={{ fontSize: 22, fontWeight: 700, color: "#f1f5f9", fontFamily: "'DM Mono',monospace", lineHeight: 1 }}>{totalRisks}</div>
+                                <div style={{ fontSize: 9, color: "#475569", marginTop: 3 }}>Total Risks</div>
+                              </div>
+                            </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
                               {riskBuckets.map(b => (
                                 <div key={b.label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
