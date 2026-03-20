@@ -1124,11 +1124,6 @@ export default function AgentShield() {
                     ))}
                   </div>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end" }}>
-                  {["Agent Registry", "Risk Analysis", "Audit", "Evaluation"].map(tag => (
-                    <div key={tag} style={{ fontSize: 11, fontWeight: 600, color: "#60a5fa", background: "rgba(59,130,246,0.1)", border: "1px solid rgba(59,130,246,0.2)", borderRadius: 6, padding: "4px 12px", whiteSpace: "nowrap" }}>{tag}</div>
-                  ))}
-                </div>
               </div>
 
               {/* Problem / Solution Tabs */}
