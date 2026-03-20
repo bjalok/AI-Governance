@@ -1310,12 +1310,12 @@ export default function AgentShield() {
                   { icon: "🔐", title: "Agent Identity & Control",     color: "#a78bfa", desc: "Every agent gets a governed identity — registered, owned, and permission-scoped before it touches production systems." },
                   { icon: "📊", title: "Quantified Risk Scoring",       color: "#f87171", desc: "Replace qualitative risk narratives with a per-agent severity score your CISO can act on — approve, flag, or block." },
                   { icon: "⚗️", title: "Pre-flight Validation Gates",   color: "#8b5cf6", desc: "Test agents against real scenarios before deployment. Block failures at the gate — not after they hit production." },
-                  { icon: "👁",  title: "Full Operational Visibility",   color: "#60a5fa", desc: "See every tool call, every token spent, every decision made. Complete audit trail from first run to last." },
+                  { icon: "👁",  title: "Full Operational Visibility",   color: "#60a5fa", desc: "See every tool call, every token spent, every decision made. Complete audit trail from first run to last.", iconFilter: "grayscale(1) brightness(10)" },
                   { icon: "🔗", title: "Framework Agnostic",            color: "#34d399", desc: "One governance layer across LangGraph, CrewAI, AutoGen, Copilot Studio, and Bedrock. No lock-in. No per-framework tooling." },
                   { icon: "💰", title: "Cost & Token Governance",       color: "#fbbf24", desc: "Track per-run spend, set budget thresholds, and catch runaway token usage before it hits your cloud bill." },
                 ].map(c => (
                   <div key={c.title} style={{ background: `${c.color}0d`, border: `1px solid ${c.color}25`, borderRadius: 14, padding: "20px 20px" }}>
-                    <div style={{ fontSize: 24, marginBottom: 12 }}>{c.icon}</div>
+                    <div style={{ fontSize: 24, marginBottom: 12, filter: c.iconFilter || "none" }}>{c.icon}</div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: c.color, marginBottom: 8 }}>{c.title}</div>
                     <div style={{ fontSize: 12, color: "#94a3b8", lineHeight: 1.6 }}>{c.desc}</div>
                   </div>
