@@ -725,6 +725,7 @@ function RadialGauge({ value, max, color, label }) {
 
 export default function AgentShield() {
   const [activeNav, setActiveNav] = useState("registry");
+  const [execTab, setExecTab] = useState("problem");
   const [selected, setSelected] = useState("REG-HR-20231012");
   const [showAgentModal, setShowAgentModal] = useState(false);
   const [evalAgent, setEvalAgent] = useState("");
@@ -894,8 +895,8 @@ export default function AgentShield() {
         .sidebar-logo { height: 64px; display: flex; align-items: center; gap: 10px; padding: 0 20px; border-bottom: 1px solid #1e2638; }
         .logo-icon { width: 34px; height: 34px; min-width: 34px; background: linear-gradient(135deg, #3b82f6, #6366f1); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; line-height:1; box-shadow: 0 0 16px rgba(59,130,246,0.4); overflow:hidden; }
         .logo-text { font-family:'DM Sans',system-ui,sans-serif; font-weight:700; font-size:16px; color:#fff; letter-spacing:0; white-space:nowrap; }
-        .nav-section-label { font-size:10px; font-weight:700; color:#475569; letter-spacing:1.2px; text-transform:uppercase; padding:18px 20px 8px; }
-        .nav-item { display:flex; align-items:center; gap:10px; padding:9px 20px; cursor:pointer; transition:all 0.15s; font-size:13.5px; color:#475569; border-left:2px solid transparent; }
+        .nav-section-label { font-size:10px; font-weight:700; color:#64748b; letter-spacing:1.2px; text-transform:uppercase; padding:18px 20px 8px; }
+        .nav-item { display:flex; align-items:center; gap:10px; padding:9px 20px; cursor:pointer; transition:all 0.15s; font-size:13.5px; color:#94a3b8; border-left:2px solid transparent; }
         .nav-item:hover { background:rgba(255,255,255,0.04); color:#cbd5e1; }
         .nav-item.active { background:rgba(59,130,246,0.08); color:#60a5fa; border-left-color:#3b82f6; font-weight:600; }
         .nav-icon { font-size:15px; width:18px; text-align:center; }
@@ -912,7 +913,7 @@ export default function AgentShield() {
         .kpi-card { background:rgba(17,23,39,0.8); border:1px solid #1e2638; border-radius:12px; padding:14px 16px; position:relative; overflow:hidden; }
         .kpi-glow { position:absolute; top:0; left:0; right:0; height:1px; }
         .kpi-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; }
-        .kpi-label { font-size:11px; color:#475569; font-weight:500; }
+        .kpi-label { font-size:11px; color:#f1f5f9; font-weight:500; }
         .kpi-icon { width:26px; height:26px; border-radius:6px; background:rgba(255,255,255,0.04); border:1px solid #1e2638; display:flex; align-items:center; justify-content:center; font-size:12px; }
         .kpi-value { font-size:22px; font-weight:700; color:#f1f5f9; font-family:'DM Sans',system-ui,sans-serif; line-height:1.2; direction:ltr; unicode-bidi:normal; }
         .table-panel { background:rgba(17,23,39,0.8); border:1px solid #1e2638; border-radius:12px; overflow:hidden; }
@@ -923,11 +924,11 @@ export default function AgentShield() {
         th { padding:8px 14px; font-size:10px; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.8px; text-align:left; }
         tbody tr { border-top:1px solid rgba(30,38,56,0.4); cursor:pointer; transition:background 0.12s; }
         tbody tr:hover, tbody tr.selected { background:rgba(26,35,54,0.8); }
-        td { padding:10px 14px; font-size:12.5px; color:#475569; }
+        td { padding:10px 14px; font-size:12.5px; color:#94a3b8; }
         .agent-id { color:#60a5fa; font-family:'DM Mono','Consolas',monospace; font-size:12px; font-weight:500; }
         .agent-name { color:#e2e8f0; font-weight:500; }
         .platform-cell { display:flex; align-items:center; gap:7px; }
-        .platform-dot { width:6px; height:6px; border-radius:50%; background:#475569; }
+        .platform-dot { width:6px; height:6px; border-radius:50%; background:#60a5fa; }
         .status-badge { display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:20px; font-size:11.5px; font-weight:600; border:1px solid; }
         .status-dot { width:5px; height:5px; border-radius:50%; }
         .panel { width:380px; min-width:380px; flex-shrink:0; background:rgba(13,19,36,0.97); border-left:1px solid #1e2638; display:flex; flex-direction:column; box-shadow:-12px 0 40px rgba(0,0,0,0.35); overflow:hidden; }
@@ -941,18 +942,18 @@ export default function AgentShield() {
         .panel-body::-webkit-scrollbar { width:4px; }
         .panel-body::-webkit-scrollbar-thumb { background:#1e2638; border-radius:10px; }
         .section-label { font-size:10px; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:1px; display:flex; align-items:center; gap:6px; margin-bottom:10px; }
-        .desc-text { font-size:12.5px; color:#475569; line-height:1.6; margin-bottom:12px; }
+        .desc-text { font-size:12.5px; color:#94a3b8; line-height:1.6; margin-bottom:12px; }
         .meta-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
         .meta-item { display:flex; flex-direction:column; gap:3px; }
-        .meta-key { font-size:10px; color:#475569; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; }
+        .meta-key { font-size:10px; color:#64748b; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; }
         .meta-val { font-size:12.5px; color:#e2e8f0; font-weight:500; }
         .env-badge { display:inline-block; background:rgba(139,92,246,0.12); color:#a78bfa; border:1px solid rgba(139,92,246,0.25); padding:2px 9px; border-radius:5px; font-size:11.5px; font-weight:600; }
         .inner-card { background:rgba(15,21,40,0.7); border:1px solid #1e2638; border-radius:10px; padding:10px 13px; }
         .kb-name { font-size:13px; font-weight:600; color:#e2e8f0; margin-bottom:8px; }
         .source-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
-        .source-chip { font-size:10.5px; color:#475569; background:rgba(255,255,255,0.04); border:1px solid #1e2638; padding:3px 9px; border-radius:5px; }
-        .kb-meta { font-size:11.5px; color:#64748b; }
-        .kb-meta span { color:#475569; }
+        .source-chip { font-size:10.5px; color:#94a3b8; background:rgba(255,255,255,0.04); border:1px solid #1e2638; padding:3px 9px; border-radius:5px; }
+        .kb-meta { font-size:11.5px; color:#94a3b8; }
+        .kb-meta span { color:#94a3b8; }
         .grounded-info { margin-top:8px; font-size:11px; color:#34d399; display:flex; align-items:center; gap:5px; }
         .bp-id { font-family:'DM Mono',monospace; font-size:13px; color:#60a5fa; font-weight:500; margin-bottom:4px; }
         .bp-name { font-size:12.5px; color:#e2e8f0; font-weight:500; margin-bottom:6px; }
@@ -961,13 +962,13 @@ export default function AgentShield() {
         .bp-shared-tag { font-size:10px; color:#60a5fa; background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); padding:2px 8px; border-radius:4px; font-weight:600; }
         .perm-list { display:flex; flex-direction:column; gap:7px; }
         .perm-row { display:flex; align-items:center; justify-content:space-between; }
-        .perm-name { font-size:12.5px; color:#475569; }
+        .perm-name { font-size:12.5px; color:#cbd5e1; }
         .perm-allowed { display:flex; align-items:center; gap:5px; font-size:11.5px; color:#34d399; font-weight:600; background:rgba(52,211,153,0.08); border:1px solid rgba(52,211,153,0.15); padding:2px 9px; border-radius:5px; }
         .perm-blocked { display:flex; align-items:center; gap:5px; font-size:11.5px; color:#f87171; font-weight:600; background:rgba(248,113,113,0.08); border:1px solid rgba(248,113,113,0.15); padding:2px 9px; border-radius:5px; }
         .connected-chips { display:flex; flex-wrap:wrap; gap:8px; }
         .agent-chip { display:flex; align-items:center; gap:7px; background:rgba(21,28,47,0.8); border:1px solid #1e2638; padding:7px 12px; border-radius:8px; font-size:12px; color:#cbd5e1; cursor:pointer; transition:border-color 0.15s; }
         .agent-chip:hover { border-color:rgba(59,130,246,0.3); }
-        .chip-id { font-family:'DM Mono',monospace; font-size:10px; color:#475569; }
+        .chip-id { font-family:'DM Mono',monospace; font-size:10px; color:#64748b; }
         .actions-list { display:flex; flex-direction:column; gap:6px; }
         .action-row { display:flex; align-items:center; justify-content:space-between; background:rgba(15,21,40,0.5); border:1px solid rgba(30,38,56,0.6); border-radius:7px; padding:9px 12px; }
         .action-name { font-family:'DM Mono',monospace; font-size:12px; color:#cbd5e1; display:flex; align-items:center; gap:8px; }
@@ -1107,8 +1108,21 @@ export default function AgentShield() {
               <div style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.12), rgba(99,102,241,0.08))", border: "1px solid rgba(59,130,246,0.2)", borderRadius: 16, padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div>
                   <div style={{ fontSize: 11, fontWeight: 700, color: "#3b82f6", textTransform: "uppercase", letterSpacing: "1.2px", marginBottom: 8 }}>AgentShield — Agivant</div>
-                  <div style={{ fontSize: 26, fontWeight: 800, color: "#f1f5f9", fontFamily: "'DM Sans',system-ui,sans-serif", lineHeight: 1.2, marginBottom: 10 }}>Enterprise Governance Framework<br />for AI Agents</div>
-                  <div style={{ fontSize: 13, color: "#94a3b8", maxWidth: 520, lineHeight: 1.6 }}>A centralized governance control plane that ensures every AI agent is identifiable, validated, risk-assessed, and auditable — enabling safe enterprise-scale AI adoption.</div>
+                  <div style={{ fontSize: 26, fontWeight: 800, color: "#f1f5f9", fontFamily: "'DM Sans',system-ui,sans-serif", lineHeight: 1.2, marginBottom: 10 }}>Govern Every AI Agent.<br />Quantify Every Risk.</div>
+                  <div style={{ fontSize: 13, color: "#94a3b8", maxWidth: 520, lineHeight: 1.6, marginBottom: 20 }}>The enterprise governance control plane that makes AI agents identifiable, validated, risk-assessed, and auditable — before they reach production.</div>
+                  <div style={{ display: "flex", gap: 28 }}>
+                    {[
+                      { num: "15", label: "Risk Vectors" },
+                      { num: "6",  label: "Governance Pillars" },
+                      { num: "5",  label: "Lifecycle Stages" },
+                      { num: "100%", label: "Audit Coverage" },
+                    ].map(s => (
+                      <div key={s.label} style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
+                        <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 22, fontWeight: 700, color: "#f1f5f9" }}>{s.num}</span>
+                        <span style={{ fontSize: 10, color: "#475569", textTransform: "uppercase", letterSpacing: "0.5px" }}>{s.label}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end" }}>
                   {["Agent Registry", "Risk Analysis", "Audit", "Evaluation"].map(tag => (
@@ -1117,111 +1131,168 @@ export default function AgentShield() {
                 </div>
               </div>
 
-              {/* Problem & Governance Gaps */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-                {/* Problem */}
-                <div style={{ background: "rgba(17,23,39,0.8)", border: "1px solid #1e2638", borderRadius: 14, padding: "22px 24px" }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "#f87171", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 14, display: "flex", alignItems: "center", gap: 7 }}>
-                    <span style={{ fontSize: 14 }}>⚠</span> The Problem
+              {/* Problem / Solution Tabs */}
+              <div style={{ background: "#0d1324", border: "1px solid #1e2638", borderRadius: 14 }}>
+                {/* Tab bar */}
+                <div style={{ display: "flex", borderBottom: "1px solid #1e2638" }}>
+                  <div onClick={() => setExecTab("problem")} style={{ padding: "14px 32px", fontSize: 13, fontWeight: 700, cursor: "pointer", borderBottom: execTab === "problem" ? "2px solid #3b82f6" : "2px solid transparent", color: execTab === "problem" ? "#f1f5f9" : "#64748b" }}>
+                    The Problem
                   </div>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: "#f1f5f9", marginBottom: 8 }}>The Governance Gap in Enterprise AI</div>
-                  <div style={{ fontSize: 12.5, color: "#94a3b8", lineHeight: 1.6, marginBottom: 16 }}>Organizations are deploying AI agents faster than governance mechanisms can keep up. Existing governance models fundamentally fail for autonomous AI systems.</div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "#f87171", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: 10 }}>Risks Emerging in Production</div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                    {["Prompt injection — adversarial input overrides system instructions", "Data leakage — personal or sensitive data exposed in agent output", "Hallucinated responses — fabricated information served as fact", "Unauthorized tool access — agents call tools outside permitted scope", "Runaway token cost — uncontrolled resource consumption"].map(r => (
-                      <div key={r} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12, color: "#94a3b8" }}>
-                        <span style={{ color: "#f87171", marginTop: 2, flexShrink: 0 }}>•</span>{r}
-                      </div>
-                    ))}
+                  <div onClick={() => setExecTab("solution")} style={{ padding: "14px 32px", fontSize: 13, fontWeight: 700, cursor: "pointer", borderBottom: execTab === "solution" ? "2px solid #3b82f6" : "2px solid transparent", color: execTab === "solution" ? "#f1f5f9" : "#64748b" }}>
+                    The Solution
                   </div>
                 </div>
 
-                {/* Governance Gaps */}
-                <div style={{ background: "rgba(17,23,39,0.8)", border: "1px solid #1e2638", borderRadius: 14, padding: "22px 24px" }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "#f59e0b", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 14, display: "flex", alignItems: "center", gap: 7 }}>
-                    <span style={{ fontSize: 14 }}>◈</span> Governance Gaps
-                  </div>
-                  {[
-                    { title: "Identity", icon: "👤", color: "#a78bfa", items: ["Uncertain authorship and ownership", "Lack of explicit permission frameworks"] },
-                    { title: "Visibility", icon: "👁", color: "#60a5fa", items: ["Black-box tool usage and data access", "Inscrutable autonomous decision reasoning"] },
-                    { title: "Enforcement", icon: "🛡", color: "#34d399", items: ["Static reports fail to block risky deployments"] },
-                    { title: "Risk Quantification", icon: "📊", color: "#fbbf24", items: ["Unmeasurable risk stalls security oversight"] },
-                  ].map(g => (
-                    <div key={g.title} style={{ marginBottom: 14 }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: g.color, marginBottom: 5, display: "flex", alignItems: "center", gap: 6 }}><span>{g.icon}</span>{g.title}</div>
-                      {g.items.map(i => (
-                        <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 12, color: "#94a3b8", marginBottom: 3 }}>
-                          <span style={{ color: g.color, marginTop: 2, flexShrink: 0 }}>•</span>{i}
+                {/* Problem panel */}
+                {execTab === "problem" && (
+                  <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: 16 }}>
+
+                    {/* Governance Gap header card */}
+                    <div style={{ background: "rgba(248,113,113,0.06)", border: "1px solid rgba(248,113,113,0.2)", borderRadius: 12, padding: "20px 24px" }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: "#f87171", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 10, display: "flex", alignItems: "center", gap: 7 }}>
+                        <span style={{ fontSize: 15 }}>⚠</span> The Governance Gap
+                      </div>
+                      <div style={{ fontSize: 15, fontWeight: 700, color: "#f1f5f9", marginBottom: 8 }}>The Governance Gap in Enterprise AI</div>
+                      <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7 }}>Organizations are deploying AI agents faster than governance mechanisms can keep up. Existing governance models fundamentally fail for autonomous AI systems.</div>
+                    </div>
+
+                    {/* Individual problem cards */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
+                      {[
+                        { title: "No Agent Identity",  icon: "👤", color: "#a78bfa", items: ["Uncertain authorship and ownership", "Lack of explicit permission frameworks"] },
+                        { title: "Zero Visibility",    icon: "👁",  color: "#60a5fa", iconFilter: "grayscale(1) brightness(10)", items: ["Black-box tool usage and data access", "Inscrutable autonomous decision reasoning"] },
+                        { title: "No Enforcement",     icon: "🚫",  color: "#34d399", items: ["Static reports fail to block risky deployments"] },
+                        { title: "Risk Quantification",icon: "📊", color: "#fbbf24", items: ["Unmeasurable risk stalls security oversight"] },
+                      ].map(g => (
+                        <div key={g.title} style={{ background: `${g.color}0d`, border: `1px solid ${g.color}30`, borderRadius: 12, padding: "16px 18px" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                            <span style={{ fontSize: 18, filter: g.iconFilter || "none" }}>{g.icon}</span>
+                            <span style={{ fontSize: 13, fontWeight: 700, color: g.color }}>{g.title}</span>
+                          </div>
+                          {g.items.map(item => (
+                            <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12, color: "#94a3b8", marginBottom: 6 }}>
+                              <span style={{ color: g.color, flexShrink: 0, marginTop: 2 }}>•</span>{item}
+                            </div>
+                          ))}
                         </div>
                       ))}
                     </div>
-                  ))}
-                </div>
-              </div>
 
-              {/* Solution — Lifecycle Pipeline */}
-              <div style={{ background: "rgba(17,23,39,0.8)", border: "1px solid #1e2638", borderRadius: 14, padding: "22px 24px" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#34d399", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 6, display: "flex", alignItems: "center", gap: 7 }}>
-                  <span style={{ fontSize: 14 }}>✦</span> The Solution — Governance Control Plane
-                </div>
-                <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 20 }}>A vendor-neutral governance layer built across any agent framework, ensuring every agent is identifiable, validated, risk-assessed and auditable.</div>
-                <div style={{ display: "flex", alignItems: "stretch", gap: 0 }}>
-                  {[
-                    { step: "01", title: "Agent Registration", desc: "Registers agent identity, ownership, platform, and operational status", color: "#3b82f6", icon: "◫" },
-                    { step: "02", title: "Capability Declaration", desc: "Defines models, MCP tools, data sources, and access permissions", color: "#6366f1", icon: "≋" },
-                    { step: "03", title: "Evaluation & Validation", desc: "Tests agent behavior against scenarios and evaluation metrics", color: "#8b5cf6", icon: "⚗" },
-                    { step: "04", title: "Risk Assessment", desc: "Analyzes risks such as hallucination, data leakage, and misuse", color: "#a78bfa", icon: "◈" },
-                    { step: "05", title: "Audit Trail", desc: "Tracks agent activity, tool usage, token consumption, and cost", color: "#34d399", icon: "◎" },
-                  ].map((s, i, arr) => (
-                    <div key={s.step} style={{ flex: 1, display: "flex", alignItems: "stretch" }}>
-                      <div style={{ flex: 1, background: `rgba(${s.color === "#3b82f6" ? "59,130,246" : s.color === "#6366f1" ? "99,102,241" : s.color === "#8b5cf6" ? "139,92,246" : s.color === "#a78bfa" ? "167,139,250" : "52,211,153"},0.07)`, border: `1px solid ${s.color}30`, borderRadius: 10, padding: "16px 14px", display: "flex", flexDirection: "column", gap: 8 }}>
+                  </div>
+                )}
+
+                {/* Solution panel */}
+                {execTab === "solution" && (
+                  <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: 24 }}>
+                    {/* Lifecycle pipeline */}
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: "#34d399", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 6, display: "flex", alignItems: "center", gap: 7 }}>
+                        <span style={{ fontSize: 14 }}>✦</span> Governance Control Plane
+                      </div>
+                      <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 20 }}>A vendor-neutral governance layer built across any agent framework, ensuring every agent is identifiable, validated, risk-assessed and auditable.</div>
+                      <div style={{ display: "flex", alignItems: "stretch", gap: 0 }}>
+                        {[
+                          { step: "01", title: "Agent Registration", desc: "Registers agent identity, ownership, platform, and operational status", color: "#3b82f6", icon: "◫" },
+                          { step: "02", title: "Capability Declaration", desc: "Defines models, MCP tools, data sources, and access permissions", color: "#6366f1", icon: "≋" },
+                          { step: "03", title: "Evaluation & Validation", desc: "Tests agent behavior against scenarios and evaluation metrics", color: "#8b5cf6", icon: "⚗" },
+                          { step: "04", title: "Risk Assessment", desc: "Analyzes risks such as hallucination, data leakage, and misuse", color: "#a78bfa", icon: "◈" },
+                          { step: "05", title: "Audit Trail", desc: "Tracks agent activity, tool usage, token consumption, and cost", color: "#34d399", icon: "◎" },
+                        ].map((s, i, arr) => (
+                          <div key={s.step} style={{ flex: 1, display: "flex", alignItems: "stretch" }}>
+                            <div style={{ flex: 1, background: `rgba(${s.color === "#3b82f6" ? "59,130,246" : s.color === "#6366f1" ? "99,102,241" : s.color === "#8b5cf6" ? "139,92,246" : s.color === "#a78bfa" ? "167,139,250" : "52,211,153"},0.07)`, border: `1px solid ${s.color}30`, borderRadius: 10, padding: "16px 14px", display: "flex", flexDirection: "column", gap: 8 }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <div style={{ width: 28, height: 28, borderRadius: 8, background: `${s.color}20`, border: `1px solid ${s.color}40`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: s.color }}>{s.icon}</div>
+                                <span style={{ fontSize: 10, fontWeight: 700, color: s.color, letterSpacing: "0.5px" }}>STEP {s.step}</span>
+                              </div>
+                              <div style={{ fontSize: 12.5, fontWeight: 700, color: "#e2e8f0" }}>{s.title}</div>
+                              <div style={{ fontSize: 11.5, color: "#64748b", lineHeight: 1.5 }}>{s.desc}</div>
+                            </div>
+                            {i < arr.length - 1 && <div style={{ display: "flex", alignItems: "center", padding: "0 6px", color: "#1e2638", fontSize: 18, flexShrink: 0 }}>›</div>}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Core Capabilities */}
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: "#60a5fa", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 14 }}>Core Platform Capabilities</div>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+                        {[
+                          { title: "Agent Registry", sub: "Central inventory tracking", items: ["Agent ID & Ownership", "Platform / Status"], color: "#3b82f6", icon: "◫" },
+                          { title: "Capability Manifest", sub: "Explicitly defines access", items: ["Tool Permissions", "Knowledge Sources"], color: "#6366f1", icon: "≋" },
+                          { title: "Evaluation Framework", sub: "Automated scenario testing", items: ["Hallucination Checks", "Context Faithfulness"], color: "#8b5cf6", icon: "⚗" },
+                          { title: "Risk Analysis Engine", sub: "Scoring governance risk", items: ["Prompt Injection Detection", "Data Leakage Analysis"], color: "#f87171", icon: "◈" },
+                          { title: "Audit Trail", sub: "Real-time oversight", items: ["Tool Execution Logs", "Agent Run Activity"], color: "#34d399", icon: "◎" },
+                          { title: "Cost Governance", sub: "Resource management", items: ["Token Consumption", "Execution Cost Tracking"], color: "#fbbf24", icon: "💲" },
+                        ].map(c => (
+                          <div key={c.title} style={{ background: "rgba(17,23,39,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "16px 18px" }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 10 }}>
+                              <div style={{ width: 30, height: 30, borderRadius: 8, background: `${c.color}18`, border: `1px solid ${c.color}30`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, color: c.color }}>{c.icon}</div>
+                              <div>
+                                <div style={{ fontSize: 13, fontWeight: 700, color: "#e2e8f0" }}>{c.title}</div>
+                                <div style={{ fontSize: 11, color: "#64748b" }}>{c.sub}</div>
+                              </div>
+                            </div>
+                            {c.items.map(it => (
+                              <div key={it} style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 12, color: "#94a3b8", marginBottom: 4 }}>
+                                <span style={{ color: c.color, fontSize: 10 }}>•</span>{it}
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Risk Coverage */}
+                    <div style={{ background: "rgba(17,23,39,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "20px 24px" }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                          <div style={{ width: 28, height: 28, borderRadius: 8, background: `${s.color}20`, border: `1px solid ${s.color}40`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: s.color }}>{s.icon}</div>
-                          <span style={{ fontSize: 10, fontWeight: 700, color: s.color, letterSpacing: "0.5px" }}>STEP {s.step}</span>
+                          <span style={{ fontSize: 15, color: "#f87171" }}>◈</span>
+                          <span style={{ fontSize: 13, fontWeight: 700, color: "#f1f5f9" }}>Risk Coverage</span>
+                          <span style={{ fontSize: 11, color: "#64748b" }}>·</span>
+                          <span style={{ fontSize: 11, color: "#64748b" }}>15 Enterprise Scenarios</span>
                         </div>
-                        <div style={{ fontSize: 12.5, fontWeight: 700, color: "#e2e8f0" }}>{s.title}</div>
-                        <div style={{ fontSize: 11.5, color: "#64748b", lineHeight: 1.5 }}>{s.desc}</div>
-                      </div>
-                      {i < arr.length - 1 && <div style={{ display: "flex", alignItems: "center", padding: "0 6px", color: "#1e2638", fontSize: 18, flexShrink: 0 }}>›</div>}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Core Capabilities */}
-              <div>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#60a5fa", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 14 }}>Core Platform Capabilities</div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
-                  {[
-                    { title: "Agent Registry", sub: "Central inventory tracking", items: ["Agent ID & Ownership", "Platform / Status"], color: "#3b82f6", icon: "◫" },
-                    { title: "Capability Manifest", sub: "Explicitly defines access", items: ["Tool Permissions", "Knowledge Sources"], color: "#6366f1", icon: "≋" },
-                    { title: "Evaluation Framework", sub: "Automated scenario testing", items: ["Hallucination Checks", "Context Faithfulness"], color: "#8b5cf6", icon: "⚗" },
-                    { title: "Risk Analysis Engine", sub: "Scoring governance risk", items: ["Prompt Injection Detection", "Data Leakage Analysis"], color: "#f87171", icon: "◈" },
-                    { title: "Audit Trail", sub: "Real-time oversight", items: ["Tool Execution Logs", "Agent Run Activity"], color: "#34d399", icon: "◎" },
-                    { title: "Cost Governance", sub: "Resource management", items: ["Token Consumption", "Execution Cost Tracking"], color: "#fbbf24", icon: "💲" },
-                  ].map(c => (
-                    <div key={c.title} style={{ background: "rgba(17,23,39,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "16px 18px" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 10 }}>
-                        <div style={{ width: 30, height: 30, borderRadius: 8, background: `${c.color}18`, border: `1px solid ${c.color}30`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, color: c.color }}>{c.icon}</div>
-                        <div>
-                          <div style={{ fontSize: 13, fontWeight: 700, color: "#e2e8f0" }}>{c.title}</div>
-                          <div style={{ fontSize: 11, color: "#64748b" }}>{c.sub}</div>
+                        <div style={{ display: "flex", gap: 8 }}>
+                          {[{ label: "Critical", color: "#ef4444" }, { label: "High", color: "#f97316" }, { label: "Medium", color: "#fbbf24" }, { label: "Low", color: "#34d399" }].map(s => (
+                            <div key={s.label} style={{ fontSize: 10, fontWeight: 600, color: s.color, background: `${s.color}18`, border: `1px solid ${s.color}40`, borderRadius: 4, padding: "2px 8px" }}>{s.label}</div>
+                          ))}
                         </div>
                       </div>
-                      {c.items.map(it => (
-                        <div key={it} style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 12, color: "#94a3b8", marginBottom: 4 }}>
-                          <span style={{ color: c.color, fontSize: 10 }}>•</span>{it}
-                        </div>
-                      ))}
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 8 }}>
+                        {[
+                          { label: "Prompt Injection",    severity: "critical" },
+                          { label: "Jailbreak",           severity: "critical" },
+                          { label: "PII Leakage",         severity: "critical" },
+                          { label: "Credential Exposure", severity: "critical" },
+                          { label: "Regulatory Breach",   severity: "critical" },
+                          { label: "Hallucination",       severity: "high" },
+                          { label: "Unauthorized Tools",  severity: "high" },
+                          { label: "Irreversible Actions",severity: "high" },
+                          { label: "Session Poisoning",   severity: "high" },
+                          { label: "Recursive Loops",     severity: "high" },
+                          { label: "Toxic Content",       severity: "medium" },
+                          { label: "Decision Bias",       severity: "medium" },
+                          { label: "Scope Creep",         severity: "medium" },
+                          { label: "Stale Knowledge",     severity: "medium" },
+                          { label: "Runaway Cost",        severity: "low" },
+                        ].map(r => {
+                          return (
+                            <div key={r.label} style={{ background: "rgba(59,130,246,0.06)", border: "1px solid #1e2638", borderRadius: 8, padding: "8px 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#60a5fa", flexShrink: 0 }} />
+                              <span style={{ fontSize: 11, color: "#cbd5e1", lineHeight: 1.3 }}>{r.label}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
 
-              {/* Bottom tagline */}
-              <div style={{ background: "linear-gradient(90deg, rgba(239,68,68,0.1), rgba(239,68,68,0.05))", border: "1px solid rgba(239,68,68,0.2)", borderRadius: 10, padding: "14px 22px", textAlign: "center" }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: "#f87171", marginBottom: 4 }}>Middleware for AI Safety</div>
-                <div style={{ fontSize: 12, color: "#94a3b8" }}>Ensuring every AI Agent is identifiable, validated, risk assessed and auditable — across any framework, at enterprise scale.</div>
+                    {/* Bottom tagline */}
+                    <div style={{ background: "linear-gradient(90deg, rgba(239,68,68,0.1), rgba(239,68,68,0.05))", border: "1px solid rgba(239,68,68,0.2)", borderRadius: 10, padding: "14px 22px", textAlign: "center" }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: "#f87171", marginBottom: 4 }}>Middleware for AI Safety</div>
+                      <div style={{ fontSize: 12, color: "#94a3b8" }}>Ensuring every AI Agent is identifiable, validated, risk assessed and auditable — across any framework, at enterprise scale.</div>
+                    </div>
+                  </div>
+                )}
               </div>
 
             </div>
@@ -1234,8 +1305,26 @@ export default function AgentShield() {
               {/* Hero */}
               <div style={{ background: "linear-gradient(135deg, rgba(99,102,241,0.12), rgba(139,92,246,0.08))", border: "1px solid rgba(99,102,241,0.2)", borderRadius: 16, padding: "28px 32px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: "#a78bfa", textTransform: "uppercase", letterSpacing: "1.2px", marginBottom: 8 }}>Why AgentShield</div>
-                <div style={{ fontSize: 24, fontWeight: 800, color: "#f1f5f9", fontFamily: "'DM Sans',system-ui,sans-serif", lineHeight: 1.2, marginBottom: 10 }}>Deploy AI Agents with<br />Enterprise-Grade Control</div>
-                <div style={{ fontSize: 13, color: "#94a3b8", maxWidth: 600, lineHeight: 1.6 }}>AgentShield is the governance control plane that sits between your AI agents and your enterprise — enforcing identity, safety, and accountability at every step.</div>
+                <div style={{ fontSize: 24, fontWeight: 800, color: "#f1f5f9", fontFamily: "'DM Sans',system-ui,sans-serif", lineHeight: 1.2, marginBottom: 10 }}>Six reasons to deploy<br />AgentShield today.</div>
+                <div style={{ fontSize: 13, color: "#94a3b8", maxWidth: 600, lineHeight: 1.6 }}>Each value driver addresses a specific governance gap that blocks safe enterprise AI adoption. Short, measurable, and directly tied to risk reduction.</div>
+              </div>
+
+              {/* Six Value Driver Cards */}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+                {[
+                  { icon: "🔐", title: "Agent Identity & Control",     color: "#a78bfa", desc: "Every agent gets a governed identity — registered, owned, and permission-scoped before it touches production systems." },
+                  { icon: "📊", title: "Quantified Risk Scoring",       color: "#f87171", desc: "Replace qualitative risk narratives with a per-agent severity score your CISO can act on — approve, flag, or block." },
+                  { icon: "⚗️", title: "Pre-flight Validation Gates",   color: "#8b5cf6", desc: "Test agents against real scenarios before deployment. Block failures at the gate — not after they hit production." },
+                  { icon: "👁",  title: "Full Operational Visibility",   color: "#60a5fa", desc: "See every tool call, every token spent, every decision made. Complete audit trail from first run to last." },
+                  { icon: "🔗", title: "Framework Agnostic",            color: "#34d399", desc: "One governance layer across LangGraph, CrewAI, AutoGen, Copilot Studio, and Bedrock. No lock-in. No per-framework tooling." },
+                  { icon: "💰", title: "Cost & Token Governance",       color: "#fbbf24", desc: "Track per-run spend, set budget thresholds, and catch runaway token usage before it hits your cloud bill." },
+                ].map(c => (
+                  <div key={c.title} style={{ background: `${c.color}0d`, border: `1px solid ${c.color}25`, borderRadius: 14, padding: "20px 20px" }}>
+                    <div style={{ fontSize: 24, marginBottom: 12 }}>{c.icon}</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: c.color, marginBottom: 8 }}>{c.title}</div>
+                    <div style={{ fontSize: 12, color: "#94a3b8", lineHeight: 1.6 }}>{c.desc}</div>
+                  </div>
+                ))}
               </div>
 
               {/* Problem → Solution */}
@@ -1266,44 +1355,21 @@ export default function AgentShield() {
                     <span>✦</span> With AgentShield
                   </div>
                   {[
-                    { value: "Govern every agent", detail: "Central registry with identity, ownership, and lifecycle status for all agents" },
-                    { value: "Quantify AI agent risk", detail: "Risk scoring engine produces measurable, comparable governance scores" },
-                    { value: "Block before deployment", detail: "Pre-flight policy gates prevent risky agents from reaching production" },
-                    { value: "Full audit observability", detail: "Every tool call, data access, and decision is logged and traceable" },
+                    "Every agent registered, owned, and governed",
+                    "Complete audit trail on every interaction",
+                    "Pre-flight gates block risky deployments",
+                    "15-vector quantified risk per agent",
+                    "Real-time token and cost governance",
                   ].map(v => (
-                    <div key={v.value} style={{ display: "flex", gap: 12, marginBottom: 14 }}>
-                      <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#34d399", marginTop: 5, flexShrink: 0 }} />
-                      <div>
-                        <div style={{ fontSize: 12.5, fontWeight: 600, color: "#f1f5f9", marginBottom: 2 }}>{v.value}</div>
-                        <div style={{ fontSize: 11.5, color: "#64748b", lineHeight: 1.5 }}>{v.detail}</div>
-                      </div>
+                    <div key={v} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                      <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#34d399", flexShrink: 0 }} />
+                      <span style={{ fontSize: 12.5, fontWeight: 600, color: "#f1f5f9" }}>{v}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
 
-              {/* Unfair Advantage */}
-              <div style={{ background: "rgba(17,23,39,0.8)", border: "1px solid #1e2638", borderRadius: 14, padding: "22px 24px" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#fbbf24", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 16, display: "flex", alignItems: "center", gap: 7 }}>
-                  <span>★</span> Unfair Advantage
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 14 }}>
-                  {[
-                    { title: "Framework Agnostic", desc: "Works across LangGraph, CrewAI, AutoGen, Copilot Studio, AWS Bedrock — any agent framework.", color: "#6366f1", icon: "⊞" },
-                    { title: "Identity + Enforcement + Observability", desc: "The only platform combining all three in a single governance control plane.", color: "#a78bfa", icon: "◈" },
-                    { title: "Quantified Risk Score", desc: "First-of-kind risk scoring for AI agents, enabling security teams to act with confidence.", color: "#fbbf24", icon: "◎" },
-                  ].map(a => (
-                    <div key={a.title} style={{ display: "flex", gap: 14, padding: "14px 16px", background: "rgba(15,21,40,0.6)", border: "1px solid #1e2638", borderRadius: 10 }}>
-                      <div style={{ width: 32, height: 32, borderRadius: 9, background: `${a.color}18`, border: `1px solid ${a.color}30`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, color: a.color, flexShrink: 0 }}>{a.icon}</div>
-                      <div>
-                        <div style={{ fontSize: 13, fontWeight: 700, color: "#e2e8f0", marginBottom: 5 }}>{a.title}</div>
-                        <div style={{ fontSize: 12, color: "#64748b", lineHeight: 1.5 }}>{a.desc}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
 
             </div>
           )}
@@ -1314,10 +1380,10 @@ export default function AgentShield() {
               <div className="kpi-grid" style={{ display: 'flex', flexWrap: 'nowrap', gap: '16px' }}>
                 {[
                   { label: "Total Agents Registered", value: "20", icon: "👥", glow: "linear-gradient(90deg,transparent,#3b82f6,transparent)", color: "#3b82f6" },
-                  { label: "Active", value: "14", icon: "✓", glow: "linear-gradient(90deg,transparent,#10b981,transparent)", color: "#10b981" },
-                  { label: "Inactive", value: "2", icon: "⏸", glow: "linear-gradient(90deg,transparent,#6b7280,transparent)", color: "#6b7280" },
-                  { label: "Suspended", value: "2", icon: "⛔", glow: "linear-gradient(90deg,transparent,#f59e0b,transparent)", color: "#f59e0b" },
-                  { label: "Approval Pending", value: "2", icon: "◷", glow: "linear-gradient(90deg,transparent,#facc15,transparent)", color: "#facc15" },
+                  { label: "Active", value: "14", icon: "◉", glow: "linear-gradient(90deg,transparent,#34d399,transparent)", color: "#34d399" },
+                  { label: "Inactive", value: "2", icon: "◉", glow: "linear-gradient(90deg,transparent,#94a3b8,transparent)", color: "#94a3b8" },
+                  { label: "Suspended", value: "2", icon: "◉", glow: "linear-gradient(90deg,transparent,#f87171,transparent)", color: "#f87171" },
+                  { label: "Approval Pending", value: "2", icon: "◉", glow: "linear-gradient(90deg,transparent,#fbbf24,transparent)", color: "#fbbf24" },
                 ].map(k => (
                   <div className="kpi-card" key={k.label} style={{ flex: 1 }}>
                     <div className="kpi-glow" style={{ background: k.glow }} />
@@ -1340,7 +1406,6 @@ export default function AgentShield() {
                   </thead>
                   <tbody>
                     {allAgents.map(a => {
-                      const s = statusStyles[a.status];
                       return (
                         <tr key={a.id} className={selected === a.id ? "selected" : ""} onClick={() => { setSelected(a.id); setShowAgentModal(true); }}>
                           <td><span className="agent-id">{a.id}</span></td>
@@ -1349,8 +1414,11 @@ export default function AgentShield() {
                           <td>{a.owner}</td>
                           <td>{a.date}</td>
                           <td>
-                            <span className={`status-badge ${s.bg} ${s.text} ${s.border}`} style={{ whiteSpace: "nowrap" }}>
-                              ◉ {a.status}
+                            <span style={{ display: "inline-flex", alignItems: "center", gap: 6, whiteSpace: "nowrap", fontSize: 12.5, fontWeight: 600,
+                              color: a.status === "Active" ? "#34d399" : a.status === "Suspended" ? "#f87171" : a.status === "Approval Pending" ? "#fbbf24" : "#94a3b8" }}>
+                              <span style={{ fontSize: 14,
+                                color: a.status === "Active" ? "#34d399" : a.status === "Suspended" ? "#f87171" : a.status === "Approval Pending" ? "#fbbf24" : "#94a3b8" }}>◉</span>
+                              {a.status}
                             </span>
                           </td>
                         </tr>
@@ -1432,12 +1500,12 @@ export default function AgentShield() {
                         {generatedTCs.map(tc => (
                           <tr key={tc.id}>
                             <td><span className="agent-id">{tc.id}</span></td>
-                            <td style={{ color: "#2a3449" }}>{tc.query}</td>
-                            <td>{tc.expectedOutput}</td>
-                            <td style={{ color: tc.status === "Fail" ? "#f87171" : tc.status === "Pass" ? "#94a3b8" : "#475569" }}>{tc.actualOutput}</td>
-                            <td style={{ fontSize: 11, color: "#64748b" }}>{tc.context}</td>
+                            <td style={{ color: "#f1f5f9" }}>{tc.query}</td>
+                            <td style={{ color: "#f1f5f9" }}>{tc.expectedOutput}</td>
+                            <td style={{ color: tc.status === "Fail" ? "#f87171" : tc.status === "Pass" ? "#94a3b8" : "#cbd5e1" }}>{tc.actualOutput}</td>
+                            <td style={{ fontSize: 11, color: "#94a3b8" }}>{tc.context}</td>
                             <td>
-                              {!tc.status && <span style={{ color: "#475569", fontSize: 12 }}>—</span>}
+                              {!tc.status && <span style={{ color: "#64748b", fontSize: 12 }}>—</span>}
                               {tc.status === "Pass" && <span className="tc-pass">Pass</span>}
                               {tc.status === "Fail" && <span className="tc-fail">Fail</span>}
                             </td>
@@ -1526,7 +1594,7 @@ export default function AgentShield() {
                               onChange={e => setIntents(prev => prev.map((it, i) => i === idx ? { ...it, text: e.target.value } : it))}
                               placeholder="Describe the user story..."
                               rows={2}
-                              style={{ width: "100%", background: "#0a0f1e", border: "1px solid #2a3449", borderRadius: 6, padding: "8px 10px", color: "#1e2638", fontSize: 12, fontFamily: "'DM Sans', system-ui, sans-serif", resize: "vertical", outline: "none", lineHeight: 1.5 }} />
+                              style={{ width: "100%", background: "#0a0f1e", border: "1px solid #2a3449", borderRadius: 6, padding: "8px 10px", color: "#f1f5f9", fontSize: 12, fontFamily: "'DM Sans', system-ui, sans-serif", resize: "vertical", outline: "none", lineHeight: 1.5 }} />
                           </div>
                         ))}
                       </div>
@@ -1536,7 +1604,7 @@ export default function AgentShield() {
                     {modalTCs.length > 0 && (
                       <div style={{ marginBottom: 18, background: "rgba(15,21,40,0.7)", border: "1px solid #1e2638", borderRadius: 8, overflow: "auto" }}>
                         <div style={{ padding: "10px 14px", borderBottom: "1px solid #1e2638", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                          <span style={{ fontSize: 12, fontWeight: 700, color: "#1e2638" }}>Generated Test Cases</span>
+                          <span style={{ fontSize: 12, fontWeight: 700, color: "#e2e8f0" }}>Generated Test Cases</span>
                           <span style={{ fontSize: 11, color: "#64748b" }}>{modalTCs.length} total · {intents.length} intents</span>
                         </div>
                         <div style={{ overflowX: "auto", maxHeight: 240 }}>
@@ -1555,9 +1623,9 @@ export default function AgentShield() {
                                 <tr key={tc.id}>
                                   <td>{tc.id}</td>
                                   <td><span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#60a5fa" }}>{tc.intentId}</span></td>
-                                  <td style={{ color: "#2a3449" }}>{tc.query}</td>
-                                  <td>{tc.expectedOutput}</td>
-                                  <td style={{ fontSize: 11, color: "#64748b" }}>{tc.context}</td>
+                                  <td style={{ color: "#f1f5f9" }}>{tc.query}</td>
+                                  <td style={{ color: "#f1f5f9" }}>{tc.expectedOutput}</td>
+                                  <td style={{ fontSize: 11, color: "#94a3b8" }}>{tc.context}</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -1864,7 +1932,7 @@ export default function AgentShield() {
                                         <span style={{ fontFamily:"'DM Mono',monospace", fontSize:11, color:"#60a5fa" }}>{r.id}</span>
                                       </div>
                                     </td>
-                                    <td style={{ color:"#1e2638", fontWeight:500, lineHeight:1.5 }}>{r.scenario}</td>
+                                    <td style={{ color:"#cbd5e1", fontWeight:500, lineHeight:1.5 }}>{r.scenario}</td>
                                     <td>
                                       <span style={{ fontSize:11, padding:"2px 8px", borderRadius:20, background:`${typeColors[r.type]}18`, color:typeColors[r.type], border:`1px solid ${typeColors[r.type]}30`, fontWeight:600 }}>
                                         {r.type}
@@ -2057,16 +2125,16 @@ export default function AgentShield() {
                     {/* Summary below graph */}
                     <div style={{ display: "flex", gap: 28, marginTop: 12, paddingTop: 12, borderTop: "1px solid #1e2638" }}>
                       <div>
-                        <div style={{ fontSize: 10, color: "#475569", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Runs in period</div>
+                        <div style={{ fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Runs in period</div>
                         <div style={{ fontSize: 18, fontWeight: 700, color: "#60a5fa", fontFamily: "'DM Mono',monospace" }}>{filteredTotalRuns}</div>
                       </div>
                       <div>
-                        <div style={{ fontSize: 10, color: "#475569", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Total runs (all time)</div>
-                        <div style={{ fontSize: 18, fontWeight: 700, color: "#1e2638", fontFamily: "'DM Mono',monospace" }}>{cd.dailyRuns.reduce((s, d) => s + d.runs, 0)}</div>
+                        <div style={{ fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Total runs (all time)</div>
+                        <div style={{ fontSize: 18, fontWeight: 700, color: "#f1f5f9", fontFamily: "'DM Mono',monospace" }}>{cd.dailyRuns.reduce((s, d) => s + d.runs, 0)}</div>
                       </div>
                       <div>
-                        <div style={{ fontSize: 10, color: "#475569", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Days tracked</div>
-                        <div style={{ fontSize: 18, fontWeight: 700, color: "#1e2638", fontFamily: "'DM Mono',monospace" }}>{data.length}</div>
+                        <div style={{ fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Days tracked</div>
+                        <div style={{ fontSize: 18, fontWeight: 700, color: "#f1f5f9", fontFamily: "'DM Mono',monospace" }}>{data.length}</div>
                       </div>
                     </div>
                   </div>
@@ -2096,8 +2164,8 @@ export default function AgentShield() {
                         {cd.currentRunToolCosts.map(t => (
                           <tr key={t.tool}>
                             <td><span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, color: "#a78bfa" }}>{t.server}</span></td>
-                            <td style={{ color: "#2a3449" }}>{t.tool}</td>
-                            <td style={{ textAlign: "right", color: "#1e2638", fontFamily: "'DM Mono',monospace", fontSize: 11 }}>{t.calls}</td>
+                            <td style={{ color: "#f1f5f9" }}>{t.tool}</td>
+                            <td style={{ textAlign: "right", color: "#94a3b8", fontFamily: "'DM Mono',monospace", fontSize: 11 }}>{t.calls}</td>
                             <td style={{ textAlign: "right", color: "#64748b", fontFamily: "'DM Mono',monospace", fontSize: 11 }}>{(t.tokens / 1000).toFixed(1)}K</td>
                             <td style={{ textAlign: "right", color: "#fbbf24", fontWeight: 700, fontFamily: "'DM Mono',monospace", fontSize: 11 }}>${t.cost.toFixed(2)}</td>
                             <td>
@@ -2309,7 +2377,7 @@ export default function AgentShield() {
 
                           {/* Latency trend bar chart */}
                           <div style={{ background: "rgba(17,23,39,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "16px 20px" }}>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: "#2a3449", marginBottom: 16 }}>Production Latency Trend — {selectedPeriodLabel}</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: "#f1f5f9", marginBottom: 16 }}>Production Latency Trend — {selectedPeriodLabel}</div>
                             {latTrend.length === 0 ? (
                               <div style={{ textAlign: "center", padding: "24px 0", color: "#475569", fontSize: 12 }}>No data for selected date range.</div>
                             ) : (
@@ -2321,7 +2389,7 @@ export default function AgentShield() {
                                       <div style={{ width: "60%", height: Math.round((d.p95 / maxP99) * 80), background: "rgba(167,139,250,0.35)", border: "1px solid rgba(167,139,250,0.5)", borderRadius: "3px 3px 0 0", marginTop: -Math.round((d.p99 / maxP99) * 80) - 1, position: "relative" }} title={`P95: ${d.p95}s`} />
                                     </div>
                                     <div style={{ width: "60%", height: Math.round((d.p50 / maxP99) * 80), background: "rgba(52,211,153,0.4)", border: "1px solid rgba(52,211,153,0.6)", borderRadius: "3px 3px 0 0" }} title={`P50: ${d.p50}s`} />
-                                    <div style={{ fontSize: 9, color: "#475569", marginTop: 4 }}>{d.label}</div>
+                                    <div style={{ fontSize: 9, color: "#94a3b8", marginTop: 4 }}>{d.label}</div>
                                   </div>
                                 ))}
                               </div>
@@ -2330,7 +2398,7 @@ export default function AgentShield() {
                               {[{ color: "#34d399", label: "P50" }, { color: "#a78bfa", label: "P95" }, { color: "#f87171", label: "P99" }].map(l => (
                                 <div key={l.label} style={{ display: "flex", alignItems: "center", gap: 5 }}>
                                   <div style={{ width: 10, height: 10, borderRadius: 2, background: l.color, opacity: 0.7 }} />
-                                  <span style={{ fontSize: 11, color: "#64748b" }}>{l.label}</span>
+                                  <span style={{ fontSize: 11, color: "#94a3b8" }}>{l.label}</span>
                                 </div>
                               ))}
                             </div>
@@ -2357,7 +2425,7 @@ export default function AgentShield() {
                                   {auditProductionData.latency.byTool.map(t => (
                                     <tr key={t.tool}>
                                       <td><span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, color: "#a78bfa" }}>{t.server}</span></td>
-                                      <td style={{ color: "#2a3449" }}>{t.tool}</td>
+                                      <td style={{ color: "#f1f5f9" }}>{t.tool}</td>
                                       <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#94a3b8" }}>{t.calls.toLocaleString()}</td>
                                       <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#34d399" }}>{t.p50}</td>
                                       <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#a78bfa" }}>{t.p95}</td>
@@ -2440,24 +2508,24 @@ export default function AgentShield() {
 
                     {/* Cost trend bar chart */}
                     <div style={{ background: "rgba(17,23,39,0.8)", border: "1px solid #1e2638", borderRadius: 12, padding: "16px 20px" }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: "#2a3449", marginBottom: 16 }}>Cost Over Time — {periods.find(p => p.key === auditPeriod)?.label}</div>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: "#f1f5f9", marginBottom: 16 }}>Cost Over Time — {periods.find(p => p.key === auditPeriod)?.label}</div>
                       <div style={{ display: "flex", alignItems: "flex-end", gap: 6, minHeight: 100 }}>
                         {costPeriod.days.map((d, i) => (
                           <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-                            <div style={{ fontSize: 9, color: "#475569" }}>${d.cost.toFixed(0)}</div>
+                            <div style={{ fontSize: 9, color: "#94a3b8" }}>${d.cost.toFixed(0)}</div>
                             <div style={{ width: "70%", height: Math.round((d.cost / maxCost) * 90) + 4, background: "linear-gradient(180deg,#3b82f6,#1d4ed8)", borderRadius: "4px 4px 0 0", opacity: 0.85 }} />
-                            <div style={{ fontSize: 9, color: "#475569", textAlign: "center", whiteSpace: "nowrap" }}>{d.label}</div>
+                            <div style={{ fontSize: 9, color: "#94a3b8", textAlign: "center", whiteSpace: "nowrap" }}>{d.label}</div>
                           </div>
                         ))}
                       </div>
                       <div style={{ display: "flex", gap: 28, marginTop: 12, paddingTop: 10, borderTop: "1px solid #1e2638" }}>
                         <div>
-                          <div style={{ fontSize: 10, color: "#475569", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Total in period</div>
+                          <div style={{ fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Total in period</div>
                           <div style={{ fontSize: 18, fontWeight: 700, color: "#fbbf24", fontFamily: "'DM Mono',monospace" }}>${costPeriod.total.toFixed(2)}</div>
                         </div>
                         <div>
-                          <div style={{ fontSize: 10, color: "#475569", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Runs in period</div>
-                          <div style={{ fontSize: 18, fontWeight: 700, color: "#1e2638", fontFamily: "'DM Mono',monospace" }}>{costPeriod.runs.toLocaleString()}</div>
+                          <div style={{ fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 2 }}>Runs in period</div>
+                          <div style={{ fontSize: 18, fontWeight: 700, color: "#f1f5f9", fontFamily: "'DM Mono',monospace" }}>{costPeriod.runs.toLocaleString()}</div>
                         </div>
                       </div>
                     </div>
@@ -2484,7 +2552,7 @@ export default function AgentShield() {
                             {auditProductionData.cost.byTool.map(t => (
                               <tr key={t.tool}>
                                 <td><span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, color: "#a78bfa" }}>{t.server}</span></td>
-                                <td style={{ color: "#2a3449" }}>{t.tool}</td>
+                                <td style={{ color: "#f1f5f9" }}>{t.tool}</td>
                                 <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#94a3b8" }}>{t.calls.toLocaleString()}</td>
                                 <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#64748b" }}>{(t.tokens / 1000000).toFixed(1)}M</td>
                                 <td style={{ textAlign: "right", fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#fbbf24", fontWeight: 700 }}>${t.cost.toFixed(2)}</td>
@@ -3010,8 +3078,8 @@ export default function AgentShield() {
                   <div>
                     <div className="section-label"><span style={{ color: "#3b82f6" }}>⚙</span> Model Settings</div>
                     <div className="inner-card">
-                      <div style={{ fontSize: 13, color: "#1e2638", marginBottom: 6 }}>Model: <span style={{ color: "#60a5fa" }}>{detail.modelSettings.model}</span></div>
-                      <div style={{ fontSize: 13, color: "#1e2638" }}>Temperature: <span style={{ color: "#64748b" }}>{detail.modelSettings.temp}</span></div>
+                      <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 6 }}>Model: <span style={{ color: "#60a5fa" }}>{detail.modelSettings.model}</span></div>
+                      <div style={{ fontSize: 13, color: "#94a3b8" }}>Temperature: <span style={{ color: "#94a3b8" }}>{detail.modelSettings.temp}</span></div>
                     </div>
                   </div>
                 </>
@@ -3020,21 +3088,21 @@ export default function AgentShield() {
                 <div>
                   <div className="section-label"><span style={{ color: "#3b82f6" }}>⚙</span> Capability Manifest</div>
                   <div className="inner-card">
-                    <div style={{ fontSize: 13, color: "#1e2638", marginBottom: 6 }}>Version: <span style={{ color: "#60a5fa" }}>{detail.manifest?.version || "v1.4.2"}</span></div>
-                    <div style={{ fontSize: 13, color: "#1e2638", marginBottom: 6 }}>Issued: <span style={{ color: "#64748b" }}>{detail.manifest?.issued || "Oct 12, 2023"}</span></div>
-                    <div style={{ fontSize: 13, color: "#1e2638", marginBottom: 6 }}>Expires: <span style={{ color: "#64748b" }}>{detail.manifest?.expires || "Oct 12, 2024"}</span></div>
-                    <div style={{ fontSize: 13, color: "#1e2638", marginBottom: 6 }}>Approved by: <span style={{ color: "#64748b" }}>{detail.manifest?.approvedBy || detail.owner}</span></div>
-                    <div style={{ fontSize: 13, color: "#1e2638", marginBottom: 6 }}>Declared Capabilities: <span style={{ color: "#64748b" }}>{detail.actions?.length || 0}</span></div>
-                    <div style={{ fontSize: 13, color: "#1e2638" }}>MCP Tools Registered: <span style={{ color: "#64748b" }}>{detail.actions?.length || 0}</span></div>
+                    <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 6 }}>Version: <span style={{ color: "#60a5fa" }}>{detail.manifest?.version || "v1.4.2"}</span></div>
+                    <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 6 }}>Issued: <span style={{ color: "#cbd5e1" }}>{detail.manifest?.issued || "Oct 12, 2023"}</span></div>
+                    <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 6 }}>Expires: <span style={{ color: "#cbd5e1" }}>{detail.manifest?.expires || "Oct 12, 2024"}</span></div>
+                    <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 6 }}>Approved by: <span style={{ color: "#cbd5e1" }}>{detail.manifest?.approvedBy || detail.owner}</span></div>
+                    <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 6 }}>Declared Capabilities: <span style={{ color: "#cbd5e1" }}>{detail.actions?.length || 0}</span></div>
+                    <div style={{ fontSize: 13, color: "#94a3b8" }}>MCP Tools Registered: <span style={{ color: "#cbd5e1" }}>{detail.actions?.length || 0}</span></div>
                   </div>
                   {!detail.manifest?.version && (
                     <>
                       <div className="section-label" style={{ marginTop: "20px" }}><span style={{ color: "#3b82f6" }}>⚡</span> Version History</div>
                       <div className="inner-card">
-                        <div style={{ fontSize: 13, color: "#1e2638", marginBottom: 8 }}><span style={{ color: "#60a5fa", fontWeight: 600 }}>v1.4.2</span> - Dec 15, 2025: Added support for advanced MCP tool integration</div>
-                        <div style={{ fontSize: 13, color: "#1e2638", marginBottom: 8 }}><span style={{ color: "#60a5fa", fontWeight: 600 }}>v1.3.1</span> - Nov 20, 2025: Enhanced security protocols</div>
-                        <div style={{ fontSize: 13, color: "#1e2638", marginBottom: 8 }}><span style={{ color: "#60a5fa", fontWeight: 600 }}>v1.2.0</span> - Oct 10, 2025: Introduced multi-agent connectivity</div>
-                        <div style={{ fontSize: 13, color: "#1e2638" }}><span style={{ color: "#60a5fa", fontWeight: 600 }}>v1.1.0</span> - Sep 5, 2025: Initial release with basic capabilities</div>
+                        <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 8 }}><span style={{ color: "#60a5fa", fontWeight: 600 }}>v1.4.2</span> - Dec 15, 2025: Added support for advanced MCP tool integration</div>
+                        <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 8 }}><span style={{ color: "#60a5fa", fontWeight: 600 }}>v1.3.1</span> - Nov 20, 2025: Enhanced security protocols</div>
+                        <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 8 }}><span style={{ color: "#60a5fa", fontWeight: 600 }}>v1.2.0</span> - Oct 10, 2025: Introduced multi-agent connectivity</div>
+                        <div style={{ fontSize: 13, color: "#94a3b8" }}><span style={{ color: "#60a5fa", fontWeight: 600 }}>v1.1.0</span> - Sep 5, 2025: Initial release with basic capabilities</div>
                       </div>
                     </>
                   )}
@@ -3078,8 +3146,8 @@ export default function AgentShield() {
                     <div className="actions-list">
                       {detail.actions.map(ac => (
                         <div key={ac.tool} style={{ display: "flex", alignItems: "center", padding: "9px 12px", borderTop: "1px solid rgba(30,38,56,0.4)" }}>
-                          <span style={{ flex: 1, fontSize: 12, color: "#2a3449" }}>{ac.server}</span>
-                          <span style={{ flex: 1, fontSize: 12, color: "#2a3449" }}>{ac.tool}</span>
+                          <span style={{ flex: 1, fontSize: 12, color: "#94a3b8" }}>{ac.server}</span>
+                          <span style={{ flex: 1, fontSize: 12, color: "#94a3b8" }}>{ac.tool}</span>
                           <span style={{ flex: 1, textAlign: "right", fontSize: 11, color: "#34d399", fontWeight: 600 }}>{ac.status}</span>
                         </div>
                       ))}
@@ -3339,9 +3407,9 @@ export default function AgentShield() {
                         <tr key={tc.id}>
                           <td>{tc.id}</td>
                           <td><span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#60a5fa" }}>{tc.intentId || "—"}</span></td>
-                          <td style={{ color: "#2a3449" }}>{tc.query || "—"}</td>
-                          <td>{tc.expectedOutput}</td>
-                          <td style={{ fontSize: 11, color: "#64748b" }}>{tc.context}</td>
+                          <td style={{ color: "#f1f5f9" }}>{tc.query || "—"}</td>
+                          <td style={{ color: "#f1f5f9" }}>{tc.expectedOutput}</td>
+                          <td style={{ fontSize: 11, color: "#94a3b8" }}>{tc.context}</td>
                           <td>
                             <span style={{
                               fontFamily: "'DM Mono',monospace", fontSize: 10,
